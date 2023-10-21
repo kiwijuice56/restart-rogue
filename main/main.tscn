@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfq5pcosfef10"]
+[gd_scene load_steps=7 format=3 uid="uid://bfq5pcosfef10"]
 
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
 [ext_resource type="PackedScene" uid="uid://2ofuaycmm41x" path="res://main/person/blood.tscn" id="2_2yqlm"]
+[ext_resource type="PackedScene" uid="uid://jt525pnuyoph" path="res://main/weapon/weapon.tscn" id="2_bexs0"]
+[ext_resource type="Environment" uid="uid://dolm5wsf71bxa" path="res://main/environment.tres" id="3_urgbx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qsvlc"]
 size = Vector3(20, 0.1, 20)
@@ -14,6 +16,198 @@ data = PackedVector3Array(-10, 0.05, 10, 10, 0.05, 10, -10, -0.05, 10, 10, 0.05,
 [node name="Player" parent="." instance=ExtResource("1_r1ii1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
+[node name="Weapon" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 1.84472, 0)
+
+[node name="Weapon2" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 1.84472, 1.36485)
+
+[node name="Weapon3" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 1.84472, 3.28834)
+
+[node name="Weapon4" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 1.84472, 4.65319)
+
+[node name="Weapon5" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 1.84472, 0)
+
+[node name="Weapon6" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 1.84472, 1.36485)
+
+[node name="Weapon7" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 1.84472, 3.28834)
+
+[node name="Weapon8" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 1.84472, 4.65319)
+
+[node name="Weapon9" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 1.84472, 0)
+
+[node name="Weapon10" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 1.84472, 1.36485)
+
+[node name="Weapon11" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 1.84472, 3.28834)
+
+[node name="Weapon12" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 1.84472, 4.65319)
+
+[node name="Weapon13" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 1.84472, 0)
+
+[node name="Weapon14" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 1.84472, 1.36485)
+
+[node name="Weapon15" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 1.84472, 3.28834)
+
+[node name="Weapon16" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 1.84472, 4.65319)
+
+[node name="Weapon17" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 3.47147, 0)
+
+[node name="Weapon18" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 3.47147, 1.36485)
+
+[node name="Weapon19" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 3.47147, 3.28834)
+
+[node name="Weapon20" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 3.47147, 4.65319)
+
+[node name="Weapon21" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 3.47147, 0)
+
+[node name="Weapon22" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 3.47147, 1.36485)
+
+[node name="Weapon23" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 3.47147, 3.28834)
+
+[node name="Weapon24" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 3.47147, 4.65319)
+
+[node name="Weapon25" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 3.47147, 0)
+
+[node name="Weapon26" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 3.47147, 1.36485)
+
+[node name="Weapon27" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 3.47147, 3.28834)
+
+[node name="Weapon28" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 3.47147, 4.65319)
+
+[node name="Weapon29" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 3.47147, 0)
+
+[node name="Weapon30" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 3.47147, 1.36485)
+
+[node name="Weapon31" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 3.47147, 3.28834)
+
+[node name="Weapon32" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 3.47147, 4.65319)
+
+[node name="Weapon33" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 5.21008, 0)
+
+[node name="Weapon34" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 5.21008, 1.36485)
+
+[node name="Weapon35" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 5.21008, 3.28834)
+
+[node name="Weapon36" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 5.21008, 4.65319)
+
+[node name="Weapon37" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 5.21008, 0)
+
+[node name="Weapon38" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 5.21008, 1.36485)
+
+[node name="Weapon39" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 5.21008, 3.28834)
+
+[node name="Weapon40" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 5.21008, 4.65319)
+
+[node name="Weapon41" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 5.21008, 0)
+
+[node name="Weapon42" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 5.21008, 1.36485)
+
+[node name="Weapon43" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 5.21008, 3.28834)
+
+[node name="Weapon44" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 5.21008, 4.65319)
+
+[node name="Weapon45" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 5.21008, 0)
+
+[node name="Weapon46" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 5.21008, 1.36485)
+
+[node name="Weapon47" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 5.21008, 3.28834)
+
+[node name="Weapon48" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 5.21008, 4.65319)
+
+[node name="Weapon49" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 6.83682, 0)
+
+[node name="Weapon50" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 6.83682, 1.36485)
+
+[node name="Weapon51" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 6.83682, 3.28834)
+
+[node name="Weapon52" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26028, 6.83682, 4.65319)
+
+[node name="Weapon53" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 6.83682, 0)
+
+[node name="Weapon54" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 6.83682, 1.36485)
+
+[node name="Weapon55" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 6.83682, 3.28834)
+
+[node name="Weapon56" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3869, 6.83682, 4.65319)
+
+[node name="Weapon57" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 6.83682, 0)
+
+[node name="Weapon58" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 6.83682, 1.36485)
+
+[node name="Weapon59" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 6.83682, 3.28834)
+
+[node name="Weapon60" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.818285, 6.83682, 4.65319)
+
+[node name="Weapon61" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 6.83682, 0)
+
+[node name="Weapon62" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 6.83682, 1.36485)
+
+[node name="Weapon63" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 6.83682, 3.28834)
+
+[node name="Weapon64" parent="." instance=ExtResource("2_bexs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05509, 6.83682, 4.65319)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_qsvlc")
 
@@ -24,9 +218,13 @@ collision_mask = 2
 shape = SubResource("ConcavePolygonShape3D_6rhmn")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61962, 0)
-light_energy = 5.0
-omni_range = 16.255
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.81, 0)
+light_energy = 4.265
+omni_range = 23.52
 
 [node name="CPUParticles3D" parent="." instance=ExtResource("2_2yqlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_urgbx")

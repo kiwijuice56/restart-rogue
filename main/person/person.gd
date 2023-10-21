@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = _gravity(delta) + _jump(delta) + _walk(delta)
 	move_and_slide()
+	
+	$Manikin.rotation.y = $Camera3D.rotation.y
 
 func _input(event: InputEvent) -> void:
 	state_machine.input(event)

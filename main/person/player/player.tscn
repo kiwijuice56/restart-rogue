@@ -8,14 +8,21 @@
 
 [node name="Player" instance=ExtResource("1_x6gf7")]
 script = ExtResource("2_hnbm1")
-max_health = null
+
+[node name="Manikin" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" parent="." index="3"]
 shape = SubResource("CapsuleShape3D_7yo4c")
 
-[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("state")]
+[node name="Camera3D" parent="." index="4"]
+current = true
+
+[node name="Weapon" type="Node3D" parent="Camera3D" index="1"]
+
+[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("state")]
 state = NodePath("FreeControl")
 
 [node name="FreeControl" type="Node" parent="StateMachine" index="1"]
 script = ExtResource("3_xhkxq")
-camera_sens = 2.0
+camera_sens = 5.0

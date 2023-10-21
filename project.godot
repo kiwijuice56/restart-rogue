@@ -17,9 +17,16 @@ config/icon="res://icon.svg"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/unused_variable=0
 gdscript/warnings/unused_parameter=0
 gdscript/warnings/unused_signal=0
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=324
+window/stretch/mode="viewport"
 
 [input]
 
@@ -79,5 +86,5 @@ jump={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_environment="res://main/environment.tres"
