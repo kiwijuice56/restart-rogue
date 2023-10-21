@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv3webgoqog8x"]
+
+[ext_resource type="PackedScene" uid="uid://dkidqk23c0r27" path="res://main/person/person.tscn" id="1_x6gf7"]
+[ext_resource type="Script" path="res://main/person/player/player.gd" id="2_hnbm1"]
+[ext_resource type="Script" path="res://main/person/player/free_control_state.gd" id="3_xhkxq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yo4c"]
+
+[node name="Player" instance=ExtResource("1_x6gf7")]
+script = ExtResource("2_hnbm1")
+max_health = null
+
+[node name="CollisionShape3D" parent="." index="3"]
+shape = SubResource("CapsuleShape3D_7yo4c")
+
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("state")]
+state = NodePath("FreeControl")
+
+[node name="FreeControl" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("3_xhkxq")
+camera_sens = 2.0

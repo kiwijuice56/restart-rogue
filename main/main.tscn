@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfq5pcosfef10"]
+
+[ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
+[ext_resource type="PackedScene" uid="uid://2ofuaycmm41x" path="res://main/person/blood.tscn" id="2_2yqlm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qsvlc"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6rhmn"]
+data = PackedVector3Array(-10, 0.05, 10, 10, 0.05, 10, -10, -0.05, 10, 10, 0.05, 10, 10, -0.05, 10, -10, -0.05, 10, 10, 0.05, -10, -10, 0.05, -10, 10, -0.05, -10, -10, 0.05, -10, -10, -0.05, -10, 10, -0.05, -10, 10, 0.05, 10, 10, 0.05, -10, 10, -0.05, 10, 10, 0.05, -10, 10, -0.05, -10, 10, -0.05, 10, -10, 0.05, -10, -10, 0.05, 10, -10, -0.05, -10, -10, 0.05, 10, -10, -0.05, 10, -10, -0.05, -10, 10, 0.05, 10, -10, 0.05, 10, 10, 0.05, -10, -10, 0.05, 10, -10, 0.05, -10, 10, 0.05, -10, -10, -0.05, 10, 10, -0.05, 10, -10, -0.05, -10, 10, -0.05, 10, 10, -0.05, -10, -10, -0.05, -10)
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_r1ii1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qsvlc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6rhmn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61962, 0)
+light_energy = 5.0
+omni_range = 16.255
+
+[node name="CPUParticles3D" parent="." instance=ExtResource("2_2yqlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://2ofuaycmm41x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db47r"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_t75hr"]
+material = SubResource("StandardMaterial3D_db47r")
+size = Vector3(0.02, 0.02, 0.02)
+
+[sub_resource type="Curve" id="Curve_5ifxv"]
+_data = [Vector2(0, 0.988536), 0.0, 0.0, 0, 0, Vector2(1, 0.00264549), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nes6e"]
+offsets = PackedFloat32Array(0.251748, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.533, 0.065, 0.65, 1)
+
+[sub_resource type="Gradient" id="Gradient_lsemo"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0.933333, 1)
+
+[node name="CPUParticles3D" type="CPUParticles3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+cast_shadow = 0
+amount = 32
+speed_scale = 1.5
+explosiveness = 0.97
+mesh = SubResource("PrismMesh_t75hr")
+direction = Vector3(1, 1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+tangential_accel_min = -15.87
+tangential_accel_max = 19.05
+damping_max = 1.2
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_5ifxv")
+color_ramp = SubResource("Gradient_nes6e")
+color_initial_ramp = SubResource("Gradient_lsemo")
