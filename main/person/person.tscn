@@ -23,11 +23,11 @@ streams_count = 1
 stream_0/stream = ExtResource("5_88xl6")
 stream_0/weight = 1.0
 
-[sub_resource type="Animation" id="Animation_cxohj"]
-resource_name = "hurt"
-
 [sub_resource type="Animation" id="Animation_timh0"]
 length = 0.001
+
+[sub_resource type="Animation" id="Animation_cxohj"]
+resource_name = "hurt"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tangg"]
 _data = {
