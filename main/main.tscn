@@ -15,7 +15,7 @@ data = PackedVector3Array(-10, 0.05, 10, 10, 0.05, 10, -10, -0.05, 10, 10, 0.05,
 [node name="Main" type="Node"]
 
 [node name="Plasmoid" parent="." instance=ExtResource("1_ha8bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.592704, 1.0492)
 
 [node name="Person" parent="." instance=ExtResource("1_0ghbb")]
 
@@ -33,6 +33,7 @@ shape = SubResource("ConcavePolygonShape3D_6rhmn")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.81, 0)
+light_color = Color(0.768627, 0.768627, 1, 1)
 light_energy = 4.265
 omni_range = 23.52
 

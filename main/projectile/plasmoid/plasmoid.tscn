@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bku310um5b17"]
+[gd_scene load_steps=17 format=3 uid="uid://bku310um5b17"]
 
 [ext_resource type="PackedScene" uid="uid://c1aljp1e64o74" path="res://main/projectile/projectile.tscn" id="1_277x1"]
 [ext_resource type="PackedScene" uid="uid://cqvc7tpvfjkss" path="res://main/vfx/plasma/plasma_effect.tscn" id="2_quuje"]
+[ext_resource type="Shader" path="res://main/projectile/plasmoid/trail.gdshader" id="3_yqp2e"]
+[ext_resource type="Shader" path="res://main/projectile/plasmoid/trail_quad.gdshader" id="4_h37wo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g2wo3"]
 radius = 0.2
@@ -93,7 +95,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CPUParticles3D:visible")
+tracks/6/path = NodePath("GPUParticles3D:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -180,7 +182,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CPUParticles3D:visible")
+tracks/6/path = NodePath("GPUParticles3D:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -196,41 +198,45 @@ _data = {
 "charge": SubResource("Animation_a1ba7")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvyn6"]
-shading_mode = 0
-albedo_color = Color(0.835294, 1, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q0ue8"]
+shader = ExtResource("3_yqp2e")
 
-[sub_resource type="SphereMesh" id="SphereMesh_friqo"]
-material = SubResource("StandardMaterial3D_dvyn6")
-radius = 0.1
-height = 0.2
-radial_segments = 16
-rings = 8
+[sub_resource type="Gradient" id="Gradient_n250e"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Curve" id="Curve_ng8cu"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.995606, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qks5l"]
+gradient = SubResource("Gradient_n250e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ag2x5"]
+render_priority = 0
+shader = ExtResource("4_h37wo")
+shader_parameter/tex = SubResource("GradientTexture1D_qks5l")
+
+[sub_resource type="QuadMesh" id="QuadMesh_k3f4y"]
+material = SubResource("ShaderMaterial_ag2x5")
 
 [node name="Plasmoid" instance=ExtResource("1_277x1")]
+speed = 15.0
 
 [node name="PlasmaEffect" parent="." index="0" instance=ExtResource("2_quuje")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+instance_shader_parameters/color = Color(0.458824, 0.909804, 1, 1)
 
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("SphereShape3D_g2wo3")
 
 [node name="Sphere" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_4sy7j")
 mesh = SubResource("SphereMesh_nqsvi")
 
 [node name="Ring1" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_4sy7j")
 mesh = SubResource("TorusMesh_aim11")
 
 [node name="Ring2" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(-2.91475e-09, 0.0666817, -2.91475e-09, 0, -2.91475e-09, -0.0666817, -0.0666817, -2.91475e-09, 1.27408e-16, 0, 0, 0)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_4sy7j")
 mesh = SubResource("TorusMesh_aim11")
 
@@ -240,12 +246,12 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="." index="6"]
-visible = false
-emitting = false
-amount = 24
-mesh = SubResource("SphereMesh_friqo")
-gravity = Vector3(0, -6, 0)
-scale_amount_min = 0.5
-scale_amount_max = 0.5
-scale_amount_curve = SubResource("Curve_ng8cu")
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 0, 0)
+amount = 16
+lifetime = 16.0
+speed_scale = 32.0
+fixed_fps = 32
+visibility_aabb = AABB(-4, -16, -4, 8, 32, 8)
+process_material = SubResource("ShaderMaterial_q0ue8")
+draw_pass_1 = SubResource("QuadMesh_k3f4y")
