@@ -5,6 +5,8 @@ render_mode unshaded;
 uniform sampler2D noise_texture;
 instance uniform vec4 color: source_color;
 instance uniform vec2 offset = vec2(1.0, 1.0);
+instance uniform float threshold = 0.04;
+instance uniform float scale = 1.0;
 
 // Billboard effect
 void vertex() {
@@ -13,9 +15,9 @@ void vertex() {
 }
 
 void fragment() {
-	float strength = texture(noise_texture, offset + UV / 24.0 + vec2(TIME / 12.0, TIME / 8.0)).r * texture(noise_texture, UV / 16.0 - vec2(TIME * offset.x / 8.0, 0.0)).r;
+	float strength = texture(noise_texture, offset + scale * UV / 16.0 + vec2(TIME / 12.0, TIME / 8.0)).r * texture(noise_texture, scale * UV / 16.0 - vec2(TIME * offset.x / 8.0, 0.0)).r;
 	ALPHA = strength - 0.35;
-	if (ALPHA < 0.02 && ALPHA > 0.0) {
+	if (ALPHA < threshold && ALPHA > 0.0) {
 		ALPHA = 1.0;
 	} else {
 		ALPHA = 0.0;

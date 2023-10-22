@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfy3kf1ukc45o"]
+
+[ext_resource type="PackedScene" uid="uid://dkidqk23c0r27" path="res://main/person/person.tscn" id="1_vgcad"]
+[ext_resource type="Script" path="res://main/person/state_machine/state.gd" id="2_dx8wp"]
+
+[node name="Enemy" instance=ExtResource("1_vgcad")]
+
+[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("state")]
+state = NodePath("Follow")
+
+[node name="Follow" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("2_dx8wp")

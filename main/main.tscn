@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bfq5pcosfef10"]
 
 [ext_resource type="PackedScene" uid="uid://dkidqk23c0r27" path="res://main/person/person.tscn" id="1_0ghbb"]
-[ext_resource type="PackedScene" uid="uid://bku310um5b17" path="res://main/projectile/plasmoid/plasmoid.tscn" id="1_ha8bc"]
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
 [ext_resource type="PackedScene" uid="uid://2ofuaycmm41x" path="res://main/vfx/blood/blood.tscn" id="2_2yqlm"]
 [ext_resource type="Environment" uid="uid://dolm5wsf71bxa" path="res://main/environment.tres" id="3_urgbx"]
+[ext_resource type="PackedScene" uid="uid://dpdhybjomvxo3" path="res://main/ui/hud/hud.tscn" id="5_vt5wc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qsvlc"]
 size = Vector3(20, 0.1, 20)
@@ -13,9 +13,6 @@ size = Vector3(20, 0.1, 20)
 data = PackedVector3Array(-10, 0.05, 10, 10, 0.05, 10, -10, -0.05, 10, 10, 0.05, 10, 10, -0.05, 10, -10, -0.05, 10, 10, 0.05, -10, -10, 0.05, -10, 10, -0.05, -10, -10, 0.05, -10, -10, -0.05, -10, 10, -0.05, -10, 10, 0.05, 10, 10, 0.05, -10, 10, -0.05, 10, 10, 0.05, -10, 10, -0.05, -10, 10, -0.05, 10, -10, 0.05, -10, -10, 0.05, 10, -10, -0.05, -10, -10, 0.05, 10, -10, -0.05, 10, -10, -0.05, -10, 10, 0.05, 10, -10, 0.05, 10, 10, 0.05, -10, -10, 0.05, 10, -10, 0.05, -10, 10, 0.05, -10, -10, -0.05, 10, 10, -0.05, 10, -10, -0.05, -10, 10, -0.05, 10, 10, -0.05, -10, -10, -0.05, -10)
 
 [node name="Main" type="Node"]
-
-[node name="Plasmoid" parent="." instance=ExtResource("1_ha8bc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.592704, 1.0492)
 
 [node name="Person" parent="." instance=ExtResource("1_0ghbb")]
 
@@ -46,3 +43,5 @@ environment = ExtResource("3_urgbx")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.994381, 0, -0.105865, 0, 1, 0, 0.105865, 0, -0.994381, 0, 1.76291, -5.24511)
+
+[node name="HUD" parent="." instance=ExtResource("5_vt5wc")]

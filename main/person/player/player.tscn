@@ -9,10 +9,9 @@
 radius = 0.2
 height = 1.5
 
-[node name="Player" node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_x6gf7")]
+[node name="Player" instance=ExtResource("1_x6gf7")]
 script = ExtResource("2_hnbm1")
 speed = 5.0
-projectile_spawn = NodePath("Camera3D/ProjectileSpawn")
 projectile = ExtResource("3_cr0xy")
 
 [node name="Manikin" parent="." index="0"]
@@ -26,10 +25,7 @@ shape = SubResource("CapsuleShape3D_7yo4c")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.15526, 0)
 current = true
 
-[node name="ProjectileSpawn" type="Marker3D" parent="Camera3D" index="1"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0.296412, -0.153148, -0.199445)
-
-[node name="Weapon" type="Node3D" parent="Camera3D" index="2"]
+[node name="Weapon" type="Node3D" parent="Camera3D" index="1"]
 
 [node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("state")]
 state = NodePath("FreeControl")

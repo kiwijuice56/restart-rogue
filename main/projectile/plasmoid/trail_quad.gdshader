@@ -9,11 +9,11 @@ void vertex(){
 	vec3 b = mix(MODEL_MATRIX[0].xyz,MODEL_MATRIX[1].xyz,UV.y);
 	VERTEX = mix(a,b,UV.x);
 	
-	UV.x = (INSTANCE_CUSTOM.w-1.0 - UV.x)/INSTANCE_CUSTOM.z;
+	UV.x = (INSTANCE_CUSTOM.w - 1.0 - UV.x) / INSTANCE_CUSTOM.z;
 }
 
 void fragment(){
-	vec4 T = texture(tex,UV);
+	vec4 T = texture(tex, UV);
 	ALBEDO = T.xyz;
 	ALPHA = T.w;
 }

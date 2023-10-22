@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpdhybjomvxo3"]
+
+[ext_resource type="Texture2D" uid="uid://dahbb25vx54m3" path="res://main/ui/hud/cross_hair.png" id="1_558tc"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.627451)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_558tc")
+stretch_mode = 3

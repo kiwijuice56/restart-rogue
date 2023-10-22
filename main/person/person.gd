@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	state_machine.process(delta)
 	
 	velocity = _gravity(delta) + _jump(delta) + _walk(delta)
+	_animate()
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -48,7 +49,9 @@ func _gravity(delta: float) -> Vector3:
 
 func _jump(delta: float) -> Vector3:
 	if jumping:
-		if is_on_floor(): jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+		if is_on_floor():
+			jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+			$JumpStreamPlayer.play()
 		jumping = false
 		return jump_vel
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
@@ -59,6 +62,14 @@ func _walk(delta: float) -> Vector3:
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
 	return walk_vel
+
+func _animate() -> void:
+	var run_strength: float = velocity.length() / speed
+	run_strength *= (1.0 + Vector3(move_dir.x, 0, move_dir.y).dot(camera.transform.basis.z)) / 2.0
+	if move_dir.length() > 0:
+		run_strength = max(0.1, run_strength)
+	
+	model.get_node("AnimationTree").set("parameters/Normal/run_amount/blend_amount", run_strength)
 
 func shoot() -> void:
 	var new_projectile: Projectile = projectile.instantiate()
