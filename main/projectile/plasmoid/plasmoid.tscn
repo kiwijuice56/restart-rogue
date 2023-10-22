@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=3 uid="uid://bku310um5b17"]
+
+[ext_resource type="PackedScene" uid="uid://c1aljp1e64o74" path="res://main/projectile/projectile.tscn" id="1_277x1"]
+[ext_resource type="PackedScene" uid="uid://cqvc7tpvfjkss" path="res://main/vfx/plasma/plasma_effect.tscn" id="2_quuje"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g2wo3"]
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sy7j"]
+shading_mode = 0
+albedo_color = Color(3, 5.63, 3, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nqsvi"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_aim11"]
+inner_radius = 0.8
+
+[sub_resource type="Animation" id="Animation_a1ba7"]
+resource_name = "charge"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ring1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.3, 0.3, 0.3), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ring2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.2, 0.2, 0.2), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ring2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 1.5708, 0), Vector3(1.5708, 1.5708, 6.28319), Vector3(1.5708, 1.5708, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sphere:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.2, 0.2, 0.2), Vector3(0.2, 0.2, 0.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlasmaEffect:instance_shader_parameters/color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.729412, 0.627451, 0.917647, 1), Color(0.458824, 0.909804, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlasmaEffect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ew2y5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ring1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ring2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0666817, 0.0666817, 0.0666817)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ring2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 1.5708, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sphere:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0449978, 0.0449978, 0.0449978)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlasmaEffect:instance_shader_parameters/color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.94902, 0.458824, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlasmaEffect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6d0g"]
+_data = {
+"RESET": SubResource("Animation_ew2y5"),
+"charge": SubResource("Animation_a1ba7")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvyn6"]
+shading_mode = 0
+albedo_color = Color(0.835294, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_friqo"]
+material = SubResource("StandardMaterial3D_dvyn6")
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Curve" id="Curve_ng8cu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.995606, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Plasmoid" instance=ExtResource("1_277x1")]
+
+[node name="PlasmaEffect" parent="." index="0" instance=ExtResource("2_quuje")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_g2wo3")
+
+[node name="Sphere" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4sy7j")
+mesh = SubResource("SphereMesh_nqsvi")
+
+[node name="Ring1" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4sy7j")
+mesh = SubResource("TorusMesh_aim11")
+
+[node name="Ring2" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(-2.91475e-09, 0.0666817, -2.91475e-09, 0, -2.91475e-09, -0.0666817, -0.0666817, -2.91475e-09, 1.27408e-16, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4sy7j")
+mesh = SubResource("TorusMesh_aim11")
+
+[node name="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_w6d0g")
+}
+speed_scale = 2.0
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." index="6"]
+visible = false
+emitting = false
+amount = 24
+mesh = SubResource("SphereMesh_friqo")
+gravity = Vector3(0, -6, 0)
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_ng8cu")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqvc7tpvfjkss"]
+
+[ext_resource type="Shader" path="res://main/vfx/plasma/plasma.gdshader" id="1_bwwrn"]
+[ext_resource type="Texture2D" uid="uid://cm6lfgmrjsi0r" path="res://main/vfx/plasma/noise.png" id="2_0gy6m"]
+[ext_resource type="Script" path="res://main/vfx/plasma/plasma_effect.gd" id="3_pqs5p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3gxg"]
+render_priority = 0
+shader = ExtResource("1_bwwrn")
+shader_parameter/noise_texture = ExtResource("2_0gy6m")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rg7nt"]
+
+[node name="PlasmaEffect" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_g3gxg")
+instance_shader_parameters/color = Color(1, 0.94902, 0.458824, 1)
+instance_shader_parameters/offset = Vector2(1, 1)
+mesh = SubResource("QuadMesh_rg7nt")
+script = ExtResource("3_pqs5p")

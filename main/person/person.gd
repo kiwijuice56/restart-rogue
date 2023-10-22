@@ -7,6 +7,9 @@ extends CharacterBody3D
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
 
+@export var projectile_spawn: Marker3D
+@export var projectile: PackedScene
+
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var health: int = max_health
@@ -20,6 +23,7 @@ var move_dir: Vector2 # Input direction for movement
 var jumping: bool = false
 
 @onready var camera: Camera3D = $Camera3D
+@onready var model: Node3D = $Manikin
 @onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
@@ -34,8 +38,6 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = _gravity(delta) + _jump(delta) + _walk(delta)
 	move_and_slide()
-	
-	$Manikin.rotation.y = $Camera3D.rotation.y
 
 func _input(event: InputEvent) -> void:
 	state_machine.input(event)
@@ -57,3 +59,14 @@ func _walk(delta: float) -> Vector3:
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
 	return walk_vel
+
+func shoot() -> void:
+	var new_projectile: Projectile = projectile.instantiate()
+	projectile_spawn.add_child(new_projectile)
+	new_projectile.global_position = projectile_spawn.global_position
+	new_projectile.dir = -camera.basis.z
+	
+	await new_projectile.start()
+	projectile_spawn.remove_child(new_projectile)
+	get_tree().get_root().add_child(new_projectile)
+	new_projectile.global_position =  projectile_spawn.global_position

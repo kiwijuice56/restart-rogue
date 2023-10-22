@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm6lfgmrjsi0r"
-path.s3tc="res://.godot/imported/noise.png-a55654c91a15dfa9a310198346262868.s3tc.ctex"
+path.s3tc="res://.godot/imported/noise.png-d8344bec0967d2038e4a7c9da87377fd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://main/weapon/noise.png"
-dest_files=["res://.godot/imported/noise.png-a55654c91a15dfa9a310198346262868.s3tc.ctex"]
+source_file="res://main/vfx/plasma/noise.png"
+dest_files=["res://.godot/imported/noise.png-d8344bec0967d2038e4a7c9da87377fd.s3tc.ctex"]
 
 [params]
 

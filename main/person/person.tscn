@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dkidqk23c0r27"]
 
 [ext_resource type="Script" path="res://main/person/person.gd" id="1_x3rt7"]
-[ext_resource type="Script" path="res://main/state_machine/state_machine.gd" id="2_20vi7"]
 [ext_resource type="PackedScene" uid="uid://cvwooob2c2mkx" path="res://main/person/manikin.tscn" id="2_g75lx"]
-[ext_resource type="Script" path="res://main/state_machine/state.gd" id="3_vn25c"]
+[ext_resource type="Script" path="res://main/person/state_machine/state_machine.gd" id="3_hf8y5"]
+[ext_resource type="Script" path="res://main/person/state_machine/state.gd" id="4_nfwle"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddnpo"]
 radius = 0.1
@@ -51,9 +51,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0135225)
 target_position = Vector3(0, 0, -1)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controller", "state")]
-script = ExtResource("2_20vi7")
+script = ExtResource("3_hf8y5")
 controller = NodePath("..")
 state = NodePath("Root")
 
 [node name="Root" type="Node" parent="StateMachine"]
-script = ExtResource("3_vn25c")
+script = ExtResource("4_nfwle")

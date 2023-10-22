@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1aljp1e64o74"]
+
+[ext_resource type="Script" path="res://main/projectile/projectile.gd" id="1_rrljd"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_rrljd")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
