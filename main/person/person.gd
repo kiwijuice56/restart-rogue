@@ -12,7 +12,7 @@ extends CharacterBody3D
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var health: int = max_health
+@onready var health: float = max_health
 
 # The statea machine can manipulate these vectors to control the person
 var grav_vel: Vector3 
@@ -27,11 +27,21 @@ var jumping: bool = false
 @onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
-	$MainHitbox.area_entered.connect(_on_hurt.bind([1.0]))
-	$HeadHitbox.area_entered.connect(_on_hurt.bind([2.0]))
+	$MainHitbox.area_entered.connect(_on_hurt.bind(1.0))
+	$HeadHitbox.area_entered.connect(_on_hurt.bind(2.0))
 
 func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
-	pass
+	if not area.get_parent() is Projectile:
+		return
+	var p: Projectile = area.get_parent() as Projectile
+	
+	if p.sender == self:
+		return
+	
+	health -= p.damage * damage_multiplier
+	
+	if health <= 0:
+		die()
 
 func _physics_process(delta: float) -> void:
 	state_machine.process(delta)
@@ -80,6 +90,7 @@ func _animate() -> void:
 
 func shoot() -> void:
 	var new_projectile: Projectile = projectile.instantiate()
+	new_projectile.sender = self
 	projectile_spawn.add_child(new_projectile)
 	new_projectile.global_position = projectile_spawn.global_position
 	new_projectile.dir = -camera.basis.z
@@ -88,3 +99,14 @@ func shoot() -> void:
 	projectile_spawn.remove_child(new_projectile)
 	get_tree().get_root().add_child(new_projectile)
 	new_projectile.global_position =  projectile_spawn.global_position
+
+func die() -> void:
+	$MainHitbox/CollisionShape3D.call_deferred("set", "disabled", true)
+	model.get_node("Top/Skeleton3D").physical_bones_start_simulation()
+	model.get_node("Bottom/Skeleton3D").physical_bones_start_simulation()
+	model.get_node("%Blood").emitting = true
+	model.get_node("GameAnimationPlayer").play("death")
+	
+	var timer: SceneTreeTimer = get_tree().create_timer(3.0)
+	await timer.timeout
+	queue_free()

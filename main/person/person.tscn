@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkidqk23c0r27"]
+[gd_scene load_steps=13 format=3 uid="uid://dkidqk23c0r27"]
 
 [ext_resource type="Script" path="res://main/person/person.gd" id="1_x3rt7"]
 [ext_resource type="PackedScene" uid="uid://cvwooob2c2mkx" path="res://main/person/manikin.tscn" id="2_g75lx"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://blx2kbqvthkrb" path="res://main/person/60013__qubodup__whoosh.ogg" id="5_88xl6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddnpo"]
-radius = 0.1
+radius = 0.3
 height = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5cusg"]
@@ -23,13 +23,25 @@ streams_count = 1
 stream_0/stream = ExtResource("5_88xl6")
 stream_0/weight = 1.0
 
+[sub_resource type="Animation" id="Animation_cxohj"]
+resource_name = "hurt"
+
+[sub_resource type="Animation" id="Animation_timh0"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tangg"]
+_data = {
+"RESET": SubResource("Animation_timh0"),
+"hurt": SubResource("Animation_cxohj")
+}
+
 [node name="Person" type="CharacterBody3D" node_paths=PackedStringArray("projectile_spawn")]
 collision_layer = 2
 script = ExtResource("1_x3rt7")
 projectile_spawn = NodePath("Camera3D/PlayerAmmoSpawn")
 
 [node name="Manikin" parent="." instance=ExtResource("2_g75lx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0792249, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0792249, 0.13424)
 
 [node name="MainHitbox" type="Area3D" parent="."]
 collision_layer = 4
@@ -73,3 +85,8 @@ script = ExtResource("4_nfwle")
 stream = SubResource("AudioStreamRandomizer_w56m2")
 volume_db = -24.0
 max_distance = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tangg")
+}

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfq5pcosfef10"]
+[gd_scene load_steps=7 format=3 uid="uid://bfq5pcosfef10"]
 
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
 [ext_resource type="PackedScene" uid="uid://bfy3kf1ukc45o" path="res://main/person/enemy/enemy.tscn" id="1_vxshq"]
 [ext_resource type="PackedScene" uid="uid://2ofuaycmm41x" path="res://main/vfx/blood/blood.tscn" id="2_2yqlm"]
-[ext_resource type="Environment" uid="uid://dolm5wsf71bxa" path="res://main/environment.tres" id="3_urgbx"]
 [ext_resource type="PackedScene" uid="uid://dpdhybjomvxo3" path="res://main/ui/hud/hud.tscn" id="5_vt5wc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qsvlc"]
@@ -16,6 +15,38 @@ data = PackedVector3Array(-10, 0.05, 10, 10, 0.05, 10, -10, -0.05, 10, 10, 0.05,
 
 [node name="Enemy" parent="." instance=ExtResource("1_vxshq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74533, 1, 5.54631)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66162, 1, 2.61197)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+
+[node name="Enemy4" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.89091)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+
+[node name="Enemy5" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74533, 1, 3.43721)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+
+[node name="Enemy6" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66162, 1, 0.502871)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+
+[node name="Enemy7" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.706416, 1, 2.7658)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+
+[node name="Enemy8" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03892, 1, 4.3121)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+
+[node name="Enemy9" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.36804, 0.160695, 1.37776)
+projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
 
 [node name="Player" parent="." instance=ExtResource("1_r1ii1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -31,8 +62,8 @@ shape = SubResource("ConcavePolygonShape3D_6rhmn")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.81, 0)
-light_color = Color(0.768627, 0.768627, 1, 1)
-light_energy = 4.265
+light_color = Color(1, 0.811765, 0.972549, 1)
+light_energy = 4.883
 shadow_enabled = true
 omni_range = 23.52
 
@@ -41,7 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("3_urgbx")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.994381, 0, -0.105865, 0, 1, 0, 0.105865, 0, -0.994381, 0, 1.76291, -5.24511)
