@@ -48,7 +48,7 @@ collision_mask = 8
 shape = SubResource("SphereShape3D_5cusg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6863, 0)
 shape = SubResource("CapsuleShape3D_3qlbb")
 
 [node name="Camera3D" type="Camera3D" parent="."]

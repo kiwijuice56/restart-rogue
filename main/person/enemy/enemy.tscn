@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfy3kf1ukc45o"]
+[gd_scene load_steps=4 format=3 uid="uid://bfy3kf1ukc45o"]
 
 [ext_resource type="PackedScene" uid="uid://dkidqk23c0r27" path="res://main/person/person.tscn" id="1_vgcad"]
-[ext_resource type="Script" path="res://main/person/state_machine/state.gd" id="2_dx8wp"]
+[ext_resource type="Script" path="res://main/person/enemy/follow_state.gd" id="2_omewd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pffuv"]
+radius = 8.0
 
 [node name="Enemy" instance=ExtResource("1_vgcad")]
+speed = 4.0
 
 [node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("state")]
 state = NodePath("Follow")
 
-[node name="Follow" type="Node" parent="StateMachine" index="1"]
-script = ExtResource("2_dx8wp")
+[node name="Follow" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("detection_area")]
+script = ExtResource("2_omewd")
+detection_area = NodePath("../../DetectionArea3D")
+
+[node name="DetectionArea3D" type="Area3D" parent="." index="7"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea3D" index="0"]
+shape = SubResource("SphereShape3D_pffuv")

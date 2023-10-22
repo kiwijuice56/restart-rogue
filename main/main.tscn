@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bfq5pcosfef10"]
 
-[ext_resource type="PackedScene" uid="uid://dkidqk23c0r27" path="res://main/person/person.tscn" id="1_0ghbb"]
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
+[ext_resource type="PackedScene" uid="uid://bfy3kf1ukc45o" path="res://main/person/enemy/enemy.tscn" id="1_vxshq"]
 [ext_resource type="PackedScene" uid="uid://2ofuaycmm41x" path="res://main/vfx/blood/blood.tscn" id="2_2yqlm"]
 [ext_resource type="Environment" uid="uid://dolm5wsf71bxa" path="res://main/environment.tres" id="3_urgbx"]
 [ext_resource type="PackedScene" uid="uid://dpdhybjomvxo3" path="res://main/ui/hud/hud.tscn" id="5_vt5wc"]
@@ -14,7 +14,8 @@ data = PackedVector3Array(-10, 0.05, 10, 10, 0.05, 10, -10, -0.05, 10, 10, 0.05,
 
 [node name="Main" type="Node"]
 
-[node name="Person" parent="." instance=ExtResource("1_0ghbb")]
+[node name="Enemy" parent="." instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="Player" parent="." instance=ExtResource("1_r1ii1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -32,6 +33,7 @@ shape = SubResource("ConcavePolygonShape3D_6rhmn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.81, 0)
 light_color = Color(0.768627, 0.768627, 1, 1)
 light_energy = 4.265
+shadow_enabled = true
 omni_range = 23.52
 
 [node name="CPUParticles3D" parent="." instance=ExtResource("2_2yqlm")]

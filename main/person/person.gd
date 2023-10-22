@@ -36,7 +36,7 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.process(delta)
 	
-	velocity = _gravity(delta) + _jump(delta) + _walk(delta)
+	velocity = _gravity(delta) + _jump(delta) + _walk(delta, camera.current)
 	_animate()
 	move_and_slide()
 
@@ -57,18 +57,25 @@ func _jump(delta: float) -> Vector3:
 	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity * delta)
 	return jump_vel
 
-func _walk(delta: float) -> Vector3:
-	var _forward: Vector3 = camera.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)
-	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
+func _walk(delta: float, camera_basis: bool = false) -> Vector3:
+	var walk_dir: Vector3 
+	
+	if camera_basis: 
+		var _forward: Vector3 = camera.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)
+		walk_dir = Vector3(_forward.x, 0, _forward.z).normalized()
+	else:
+		walk_dir = Vector3(move_dir.x, 0, move_dir.y)
+	
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
 	return walk_vel
 
 func _animate() -> void:
 	var run_strength: float = velocity.length() / speed
-	run_strength *= (1.0 + Vector3(move_dir.x, 0, move_dir.y).dot(camera.transform.basis.z)) / 2.0
+	run_strength *= (1.0 + Vector3(move_dir.x, 0, move_dir.y).dot(-camera.transform.basis.z)) / 2.0
 	if move_dir.length() > 0:
 		run_strength = max(0.1, run_strength)
 	
+	model.rotation.y = camera.rotation.y
 	model.get_node("AnimationTree").set("parameters/Normal/run_amount/blend_amount", run_strength)
 
 func shoot() -> void:
