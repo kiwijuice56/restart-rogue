@@ -91,5 +91,6 @@ shoot={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_environment="res://main/environment.tres"

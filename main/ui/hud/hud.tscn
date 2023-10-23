@@ -1,16 +1,199 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpdhybjomvxo3"]
+[gd_scene load_steps=11 format=3 uid="uid://dpdhybjomvxo3"]
 
 [ext_resource type="Texture2D" uid="uid://dahbb25vx54m3" path="res://main/ui/hud/cross_hair.png" id="1_558tc"]
+[ext_resource type="Script" path="res://main/ui/hud/hud.gd" id="1_khdak"]
+[ext_resource type="Theme" uid="uid://6wa4efg4hsj0" path="res://main/ui/theme.tres" id="2_1eabu"]
+[ext_resource type="Shader" path="res://main/ui/hud/crt.gdshader" id="2_3nsbn"]
+[ext_resource type="Texture2D" uid="uid://c3drfrnou8rd6" path="res://icon.svg" id="3_klyev"]
+[ext_resource type="AudioStream" uid="uid://bqvlit3erxbm0" path="res://main/ui/restart_jingle.ogg" id="6_3x86o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xx5rm"]
+shader = ExtResource("2_3nsbn")
+
+[sub_resource type="Animation" id="Animation_2sn2t"]
+resource_name = "restart"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/FunLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/CrossHair:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/FunLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RestartJinglePlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ifxha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/FunLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/CrossHair:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/FunLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RestartJinglePlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_balxu"]
+_data = {
+"RESET": SubResource("Animation_ifxha"),
+"restart": SubResource("Animation_2sn2t")
+}
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_khdak")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.627451)
-texture_filter = 1
+[node name="MarginContainer" type="MarginContainer" parent="."]
+material = SubResource("ShaderMaterial_xx5rm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_1eabu")
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="AmmoLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]10 AMMO[/shake]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RestartLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]3 RESTART[/shake]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HealthLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]HP 100%[/shake]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="CrossHair" type="TextureRect" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
 texture = ExtResource("1_558tc")
 stretch_mode = 3
+
+[node name="FunLabel" type="RichTextLabel" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]restart[/shake]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xx5rm")
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("3_klyev")
+
+[node name="RestartJinglePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3x86o")
+volume_db = 9.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_balxu")
+}

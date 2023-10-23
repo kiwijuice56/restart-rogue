@@ -7,7 +7,6 @@
 radius = 8.0
 
 [node name="Enemy" instance=ExtResource("1_vgcad")]
-max_health = 1
 speed = 4.0
 
 [node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("state")]

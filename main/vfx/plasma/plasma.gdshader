@@ -1,7 +1,6 @@
 shader_type spatial;
 render_mode unshaded;
 
-
 uniform sampler2D noise_texture;
 instance uniform vec4 color: source_color;
 instance uniform vec2 offset = vec2(1.0, 1.0);
@@ -23,6 +22,6 @@ void fragment() {
 		ALPHA = 0.0;
 	}
 	float dist = max(0.0, 1.0 - 2.0 * length(UV - vec2(0.5, 0.5)));
-	ALPHA *= pow(dist, 2.0);
+	ALPHA *= dist * dist;
 	ALBEDO = color.rgb * vec3(16.0);
 }

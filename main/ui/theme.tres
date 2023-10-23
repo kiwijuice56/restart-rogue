@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://6wa4efg4hsj0"]
+
+[ext_resource type="FontFile" uid="uid://mjuwmfoxvov1" path="res://main/ui/Square-Dot-Matrix.ttf" id="1_eaydm"]
+
+[resource]
+default_font = ExtResource("1_eaydm")
+default_font_size = 27

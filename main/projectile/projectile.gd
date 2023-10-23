@@ -1,4 +1,5 @@
 class_name Projectile extends Node3D
+# Base class for all attacks
 
 @export var speed: float = 12.0
 @export var gravity: float = -6.0
