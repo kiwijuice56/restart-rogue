@@ -25,6 +25,7 @@ rings = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avq8g"]
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 albedo_color = Color(3, 5.63, 3, 1)
 

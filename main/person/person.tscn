@@ -42,7 +42,7 @@ script = ExtResource("1_x3rt7")
 projectile_spawn = NodePath("Camera3D/PlayerAmmoSpawn")
 
 [node name="Manikin" parent="." instance=ExtResource("2_g75lx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0792249, 0.13424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0792249, 0.0473399)
 
 [node name="MainHitbox" type="Area3D" parent="."]
 collision_layer = 4
@@ -53,7 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_ddnpo")
 
 [node name="HeadHitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27674, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15737, 0)
 collision_layer = 4
 collision_mask = 8
 

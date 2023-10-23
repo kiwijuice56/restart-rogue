@@ -114,6 +114,7 @@ func shoot(shoot_dir: Vector3 = -camera.basis.z) -> void:
 
 func die() -> void:
 	$MainHitbox/CollisionShape3D.call_deferred("set", "disabled", true)
+	set_physics_process(false)
 	
 	# Visuals
 	model.get_node("Top/Skeleton3D").physical_bones_start_simulation()
