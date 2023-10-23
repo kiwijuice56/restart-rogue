@@ -21,6 +21,7 @@ var jumping: bool = false
 var grav_vel: Vector3 
 var jump_vel: Vector3 
 var walk_vel: Vector3 
+var shove: Vector3
 
 @onready var camera: Camera3D = $Camera3D
 @onready var model: Node3D = $Manikin
@@ -42,12 +43,17 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 	
 	health -= p.damage * damage_multiplier
 	
+	walk_vel += p.momentum
+	
 	if health <= 0:
 		die()
+	else:
+		model.get_node("GameAnimationPlayer").play("hurt")
 
 func _physics_process(delta: float) -> void:
 	state_machine.process(delta)
 	velocity = _gravity(delta) + _jump(delta) + _walk(delta, camera.current)
+	
 	_animate()
 	move_and_slide()
 

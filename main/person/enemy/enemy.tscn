@@ -8,6 +8,10 @@ radius = 8.0
 
 [node name="Enemy" instance=ExtResource("1_vgcad")]
 speed = 4.0
+acceleration = 25.0
+
+[node name="Camera3D" parent="." index="4"]
+current = true
 
 [node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("state")]
 state = NodePath("Follow")

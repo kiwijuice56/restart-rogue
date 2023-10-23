@@ -15,7 +15,6 @@ speed = 5.0
 projectile = ExtResource("3_cr0xy")
 
 [node name="Manikin" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 
 [node name="CollisionShape3D" parent="." index="3"]

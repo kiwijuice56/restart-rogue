@@ -37,6 +37,7 @@ _data = {
 
 [node name="Person" type="CharacterBody3D" node_paths=PackedStringArray("projectile_spawn")]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_x3rt7")
 projectile_spawn = NodePath("Camera3D/PlayerAmmoSpawn")
 
@@ -60,7 +61,7 @@ collision_mask = 8
 shape = SubResource("SphereShape3D_5cusg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6863, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71, 0)
 shape = SubResource("CapsuleShape3D_3qlbb")
 
 [node name="Camera3D" type="Camera3D" parent="."]

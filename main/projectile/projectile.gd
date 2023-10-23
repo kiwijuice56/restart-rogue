@@ -4,7 +4,9 @@ class_name Projectile extends Node3D
 @export var speed: float = 12.0
 @export var gravity: float = -6.0
 @export var damage: float = 1.0
+@export var mass: float = 0.6
 
+var momentum: Vector3
 var sender: Person
 var velocity: Vector3
 var dir: Vector3
@@ -25,6 +27,7 @@ func start() -> void:
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
 	velocity.y += gravity * delta
+	momentum = velocity * mass
 
 func _on_collision(body: PhysicsBody3D) -> void:
 	if not exploding:
