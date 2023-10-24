@@ -5,6 +5,8 @@ class_name Projectile extends Node3D
 @export var gravity: float = -6.0
 @export var damage: float = 1.0
 @export var mass: float = 0.6
+@export var cost: float = 0.01
+@export var cooldown: float = 0.5
 
 var momentum: Vector3
 var sender: Person

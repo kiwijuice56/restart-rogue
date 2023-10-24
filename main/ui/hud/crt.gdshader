@@ -20,8 +20,8 @@ vec2 uv_curve(vec2 uv) {
 void fragment() {
 	//You can modify the *3.0, *-3.0 for a bigger or smaller 
 	float r = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*0.0), 0.0).r;
-	float g = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*1.0), 0.0).g;
-	float b = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*-1.0), 0.0).b;
+	float g = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*2.0), 0.0).g;
+	float b = texture(SCREEN_TEXTURE, uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*-2.0), 0.0).b;
 	
 	COLOR = vec4(r, g, b, 1.0);
 }

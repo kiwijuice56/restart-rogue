@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfq5pcosfef10"]
+[gd_scene load_steps=7 format=3 uid="uid://bfq5pcosfef10"]
 
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
+[ext_resource type="Script" path="res://main/mouse_fix.gd" id="1_utrk4"]
 [ext_resource type="PackedScene" uid="uid://bfy3kf1ukc45o" path="res://main/person/enemy/enemy.tscn" id="1_vxshq"]
 [ext_resource type="PackedScene" uid="uid://dpdhybjomvxo3" path="res://main/ui/hud/hud.tscn" id="5_vt5wc"]
 
@@ -12,30 +13,51 @@ size = Vector3(20, 0.5, 20)
 
 [node name="Main" type="Node"]
 
-[node name="Enemy" parent="." instance=ExtResource("1_vxshq")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_utrk4")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
+size = Vector2i(576, 324)
+size_2d_override = Vector2i(576, 324)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Enemy" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_vxshq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
-[node name="Enemy2" parent="." node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("1_vxshq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74533, 1, 5.54631)
-projectile_spawn = NodePath("../Enemy/Camera3D/PlayerAmmoSpawn")
+[node name="Enemy2" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_vxshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00919, 1, 5.54631)
 
-[node name="Player" parent="." instance=ExtResource("1_r1ii1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_r1ii1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.59072)
+is_player = true
+cooldown_extra_max = 0.4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
 mesh = SubResource("BoxMesh_qsvlc")
+skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/MeshInstance3D"]
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_v5odt")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.81, 0)
 light_color = Color(1, 0.811765, 0.972549, 1)
 light_energy = 7.047
 shadow_enabled = true
 omni_range = 23.52
 
-[node name="HUD" parent="." instance=ExtResource("5_vt5wc")]
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_vt5wc")]
+player = NodePath("../SubViewportContainer/SubViewport/Player")

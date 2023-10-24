@@ -8,9 +8,11 @@ extends CharacterBody3D
 @export_range(1, 35, 1) var speed: float = 10 # m/s
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
+@export var is_player: bool = false
 
 @export var projectile_spawn: Marker3D
 @export var projectile: PackedScene
+@export var cooldown_extra_max: float = 0.4
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -27,7 +29,15 @@ var shove: Vector3
 @onready var model: Node3D = $Manikin
 @onready var state_machine: StateMachine = $StateMachine
 
-@onready var health: float = max_health
+@onready var health: float = max_health:
+	set(h):
+		health_changed.emit(h)
+		health = h
+
+var last_collider: Projectile
+
+signal cooldown_started(val)
+signal health_changed(val)
 
 func _ready() -> void:
 	$MainHitbox.area_entered.connect(_on_hurt.bind(1.0))
@@ -38,10 +48,17 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 		return
 	var p: Projectile = area.get_parent() as Projectile
 	
+	if p == last_collider:
+		return
+	last_collider = p
+	
 	if p.sender == self:
 		return
 	
-	health -= p.damage * damage_multiplier
+	if not is_player and not p.sender.is_player:
+		return 
+	
+	self.health -= p.damage * damage_multiplier
 	
 	walk_vel += p.momentum
 	
@@ -52,12 +69,12 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.process(delta)
-	velocity = _gravity(delta) + _jump(delta) + _walk(delta, camera.current)
+	velocity = _gravity(delta) + _jump(delta) + _walk(delta, is_player)
 	
 	_animate()
 	move_and_slide()
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	state_machine.input(event)
 
 func _gravity(delta: float) -> Vector3:
@@ -98,8 +115,16 @@ func _animate() -> void:
 	model.get_node("AnimationTree").set("parameters/Normal/run_amount/blend_amount", run_strength)
 
 func shoot(shoot_dir: Vector3 = -camera.basis.z) -> void:
+	if not $ShootTimer.is_stopped():
+		return
+	
 	var new_projectile: Projectile = projectile.instantiate()
 	new_projectile.sender = self
+	$ShootTimer.start(new_projectile.cooldown + (0 if is_player else randf() * cooldown_extra_max))
+	cooldown_started.emit($ShootTimer.wait_time)
+	
+	if is_player:
+		self.health = max(0.01, health - new_projectile.cost)
 	
 	projectile_spawn.add_child(new_projectile)
 	

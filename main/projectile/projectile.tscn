@@ -4,6 +4,7 @@
 
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1_rrljd")
+cooldown = 0.7
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 8

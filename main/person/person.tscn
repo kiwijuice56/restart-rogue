@@ -8,10 +8,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddnpo"]
 radius = 0.3
-height = 1.2
+height = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5cusg"]
-radius = 0.12
+radius = 0.17
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qlbb"]
 radius = 0.2
@@ -40,6 +40,7 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_x3rt7")
 projectile_spawn = NodePath("Camera3D/PlayerAmmoSpawn")
+cooldown_extra_max = 0.7
 
 [node name="Manikin" parent="." instance=ExtResource("2_g75lx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0792249, 0.0473399)
@@ -49,7 +50,7 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523336, 0)
 shape = SubResource("CapsuleShape3D_ddnpo")
 
 [node name="HeadHitbox" type="Area3D" parent="."]
@@ -71,6 +72,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15526, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0135225)
 target_position = Vector3(0, 0, -1)
 
+[node name="EnemyAmmoSpawn" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572964, -0.140394, -0.424873)
+
 [node name="PlayerAmmoSpawn" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.309823, -0.116371, -0.185406)
 
@@ -91,3 +95,6 @@ max_distance = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_tangg")
 }
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true

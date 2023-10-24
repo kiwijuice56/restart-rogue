@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpdhybjomvxo3"]
+[gd_scene load_steps=12 format=3 uid="uid://dpdhybjomvxo3"]
 
 [ext_resource type="Texture2D" uid="uid://dahbb25vx54m3" path="res://main/ui/hud/cross_hair.png" id="1_558tc"]
 [ext_resource type="Script" path="res://main/ui/hud/hud.gd" id="1_khdak"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://main/ui/hud/crt.gdshader" id="2_3nsbn"]
 [ext_resource type="Texture2D" uid="uid://c3drfrnou8rd6" path="res://icon.svg" id="3_klyev"]
 [ext_resource type="AudioStream" uid="uid://bqvlit3erxbm0" path="res://main/ui/restart_jingle.ogg" id="6_3x86o"]
+[ext_resource type="Texture2D" uid="uid://bh17cpdkqv40u" path="res://main/ui/hud/reload_fill.png" id="7_dos2w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xx5rm"]
 shader = ExtResource("2_3nsbn")
@@ -135,11 +136,18 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="AmmoLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="AmmoLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -148,7 +156,16 @@ text = "[shake rate=20.0 level=5 connected=1]10 AMMO[/shake]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="RestartLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="WeaponLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]Plasma Ball[/shake]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RestartLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -158,6 +175,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="HealthLabel" type="RichTextLabel" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -166,9 +184,21 @@ text = "[shake rate=20.0 level=5 connected=1]HP 100%[/shake]"
 fit_content = true
 autowrap_mode = 0
 
+[node name="CooldownProgress" type="TextureProgressBar" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+fill_mode = 5
+texture_progress = ExtResource("7_dos2w")
+
 [node name="CrossHair" type="TextureRect" parent="MarginContainer"]
 texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("1_558tc")
 stretch_mode = 3
 
@@ -183,7 +213,7 @@ text = "[shake rate=20.0 level=5 connected=1]restart[/shake]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="CRTFilter" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_xx5rm")
 offset_right = 576.0
 offset_bottom = 324.0
@@ -191,7 +221,7 @@ texture = ExtResource("3_klyev")
 
 [node name="RestartJinglePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3x86o")
-volume_db = 9.0
+volume_db = 14.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
