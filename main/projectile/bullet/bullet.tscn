@@ -1,26 +1,187 @@
-[gd_scene load_steps=5 format=3 uid="uid://u3xyqgwwklvl"]
+[gd_scene load_steps=14 format=3 uid="uid://u3xyqgwwklvl"]
 
 [ext_resource type="PackedScene" uid="uid://c1aljp1e64o74" path="res://main/projectile/projectile.tscn" id="1_tdikv"]
+[ext_resource type="PackedScene" uid="uid://cqvc7tpvfjkss" path="res://main/vfx/plasma/plasma_effect.tscn" id="2_cja4s"]
+[ext_resource type="AudioStream" uid="uid://dw3hjfphpmd7k" path="res://main/projectile/plasmoid/586915__newlocknew__powerful-blaster-shot-x2with-tail-and-explosion_1-28lrs.wav" id="3_264xi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_36ko1"]
+radius = 0.7
+
+[sub_resource type="Animation" id="Animation_xu8wm"]
+resource_name = "charge"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e8jw6"]
+resource_name = "explode"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.3, 0.3, 0.3), Vector3(0.32, 0.32, 0.32), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_auci4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iidv6"]
+_data = {
+"RESET": SubResource("Animation_auci4"),
+"charge": SubResource("Animation_xu8wm"),
+"explode": SubResource("Animation_e8jw6")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obky3"]
 shading_mode = 0
 albedo_color = Color(3, 3, 3, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_8uuhy"]
-radial_segments = 10
-rings = 1
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1qfrp"]
+radius = 0.4
+height = 4.0
+radial_segments = 13
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_il5sl"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ip4v2"]
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lhwn2"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("3_264xi")
+stream_0/weight = 1.0
 
 [node name="Bullet" instance=ExtResource("1_tdikv")]
-gravity = -1.0
-cooldown = 0.02
+speed = 16.0
+gravity = -2.0
+damage = 0.4
+mass = 0.2
+cooldown = 0.13
+
+[node name="Area3D" parent="." index="0"]
+collision_mask = 5
 
 [node name="CollisionShape3D" parent="Area3D" index="0"]
-transform = Transform3D(-4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(1.91069e-16, 4.37114e-09, 0.1, 0.1, -4.37114e-09, 0, 4.37114e-09, 0.1, -4.37114e-09, 0, 0, 0)
 shape = SubResource("CylinderShape3D_36ko1")
 
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_iidv6")
+}
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(-4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(1.91069e-16, 4.37114e-09, 0.1, 0.1, -4.37114e-09, 2.64698e-23, 4.37114e-09, 0.1, -4.37114e-09, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_obky3")
-mesh = SubResource("CylinderMesh_8uuhy")
+mesh = SubResource("CapsuleMesh_1qfrp")
+
+[node name="Explosion" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_obky3")
+mesh = SubResource("SphereMesh_il5sl")
+
+[node name="PlasmaEffect" parent="." index="4" instance=ExtResource("2_cja4s")]
+instance_shader_parameters/color = Color(0.603922, 0.592157, 1, 1)
+instance_shader_parameters/scale = 0.85
+instance_shader_parameters/threshold = 0.02
+mesh = SubResource("QuadMesh_ip4v2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="." index="6"]
+volume_db = -32.0
+pitch_scale = 0.5
+
+[node name="BlastPlayer" type="AudioStreamPlayer3D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_lhwn2")
+volume_db = -32.0
+pitch_scale = 3.0

@@ -100,7 +100,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sphere:scale")
+tracks/3/path = NodePath("MeshInstance3D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -220,7 +220,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Sphere:visible")
+tracks/13/path = NodePath("MeshInstance3D:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -356,7 +356,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sphere:scale")
+tracks/3/path = NodePath("MeshInstance3D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -492,7 +492,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sphere:visible")
+tracks/4/path = NodePath("MeshInstance3D:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -634,7 +634,7 @@ collision_mask = 5
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("SphereShape3D_g2wo3")
 
-[node name="Sphere" type="MeshInstance3D" parent="." index="3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_funsq")
 mesh = SubResource("SphereMesh_nqsvi")
@@ -674,13 +674,13 @@ speed_scale = 2.0
 
 [node name="ChargePlayer" type="AudioStreamPlayer3D" parent="." index="9"]
 stream = SubResource("AudioStreamRandomizer_bsgob")
-volume_db = -6.0
+volume_db = -10.0
 unit_size = 8.0
 pitch_scale = 1.2
 
 [node name="ExplodePlayer" type="AudioStreamPlayer3D" parent="." index="10"]
 stream = SubResource("AudioStreamRandomizer_0t441")
-volume_db = -6.0
+volume_db = -9.0
 unit_size = 8.0
 pitch_scale = 1.2
 panning_strength = 1.45

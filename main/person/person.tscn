@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkidqk23c0r27"]
+[gd_scene load_steps=19 format=3 uid="uid://dkidqk23c0r27"]
 
 [ext_resource type="Script" path="res://main/person/person.gd" id="1_x3rt7"]
 [ext_resource type="PackedScene" uid="uid://cvwooob2c2mkx" path="res://main/person/manikin.tscn" id="2_g75lx"]
 [ext_resource type="Script" path="res://main/person/state_machine/state_machine.gd" id="3_hf8y5"]
 [ext_resource type="Script" path="res://main/person/state_machine/state.gd" id="4_nfwle"]
 [ext_resource type="AudioStream" uid="uid://blx2kbqvthkrb" path="res://main/person/60013__qubodup__whoosh.ogg" id="5_88xl6"]
+[ext_resource type="AudioStream" uid="uid://c4fcprb0cu1f8" path="res://main/person/494312__tannersound__impact-bass-crunch.wav" id="6_8uyyd"]
+[ext_resource type="AudioStream" uid="uid://b7f81ibkiddpb" path="res://main/person/617037__d4xx__bass-impact-2.wav" id="7_rer8a"]
+[ext_resource type="AudioStream" uid="uid://cb5dsgmflaiqa" path="res://main/person/660769__madpancake__headshot-sound.ogg" id="8_so3v4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddnpo"]
 radius = 0.3
@@ -34,6 +37,23 @@ _data = {
 "RESET": SubResource("Animation_timh0"),
 "hurt": SubResource("Animation_cxohj")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cg6q4"]
+streams_count = 1
+stream_0/stream = ExtResource("6_8uyyd")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_12esr"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("7_rer8a")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xmt8m"]
+random_pitch = 1.4
+streams_count = 1
+stream_0/stream = ExtResource("8_so3v4")
+stream_0/weight = 1.0
 
 [node name="Person" type="CharacterBody3D" node_paths=PackedStringArray("projectile_spawn")]
 collision_layer = 2
@@ -98,3 +118,18 @@ libraries = {
 
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DeadStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cg6q4")
+volume_db = -2.0
+unit_size = 7.0
+
+[node name="HurtStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_12esr")
+volume_db = 2.0
+unit_size = 8.0
+
+[node name="HurtStreamPlayer2" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xmt8m")
+volume_db = 2.0
+unit_size = 8.0

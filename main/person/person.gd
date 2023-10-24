@@ -20,6 +20,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var move_dir: Vector2 # Input direction for movement
 var jumping: bool = false
 var hurt: bool = false
+var dead: bool = false
 
 var grav_vel: Vector3 
 var jump_vel: Vector3 
@@ -57,6 +58,9 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 	if p.sender == self:
 		return
 	
+	if dead: 
+		return
+	
 	if not is_player and not p.sender.is_player:
 		return 
 	
@@ -68,6 +72,11 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 	if health <= 0:
 		die()
 	else:
+		if not is_player:
+			$HurtStreamPlayer.play()
+			if damage_multiplier > 1.0:
+				$HurtStreamPlayer2.play()
+		model.get_node("GameAnimationPlayer").stop()
 		model.get_node("GameAnimationPlayer").play("hurt")
 
 func _physics_process(delta: float) -> void:
@@ -120,6 +129,8 @@ func _animate() -> void:
 func shoot(shoot_dir: Vector3 = -camera.basis.z) -> void:
 	if not $ShootTimer.is_stopped():
 		return
+	if not is_player and model.get_node("GameAnimationPlayer").is_playing():
+		return
 	
 	var new_projectile: Projectile = projectile.instantiate()
 	new_projectile.sender = self
@@ -131,16 +142,21 @@ func shoot(shoot_dir: Vector3 = -camera.basis.z) -> void:
 	
 	projectile_spawn.add_child(new_projectile)
 	
+	
 	new_projectile.global_position = projectile_spawn.global_position
-	new_projectile.dir = shoot_dir
+	new_projectile.dir = shoot_dir.rotated(Vector3(0, 1, 0), .05 + (randf()-0.5) * 0.03).rotated(Vector3(1, 0, 0), -.07 + (randf()-0.5) * 0.03)
 	
 	await new_projectile.start()
 	
 	projectile_spawn.remove_child(new_projectile)
 	get_tree().get_root().add_child(new_projectile)
+	new_projectile.rotation = camera.rotation
 	new_projectile.global_position =  projectile_spawn.global_position
 
 func die() -> void:
+	dead = true
+	$DeadStreamPlayer.play()
+	$HeadHitbox/CollisionShape3D.call_deferred("set", "disabled", true)
 	$MainHitbox/CollisionShape3D.call_deferred("set", "disabled", true)
 	set_physics_process(false)
 	

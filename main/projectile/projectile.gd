@@ -7,6 +7,7 @@ class_name Projectile extends Node3D
 @export var mass: float = 0.6
 @export var cost: float = 0.01
 @export var cooldown: float = 0.5
+@export var lifetime: float = 5.0
 
 var momentum: Vector3
 var sender: Person
@@ -18,6 +19,8 @@ func _ready() -> void:
 	set_physics_process(false)
 	$Area3D.body_entered.connect(_on_collision)
 	$Area3D.area_entered.connect(_on_collision_area)
+	$Timer.timeout.connect(queue_free)
+	$Timer.start(lifetime)
 
 func start() -> void:
 	$AnimationPlayer.play("charge")
@@ -32,6 +35,8 @@ func _physics_process(delta: float) -> void:
 	momentum = velocity * mass
 
 func _on_collision(body: PhysicsBody3D) -> void:
+	if body is Person and body.dead:
+		return
 	if not exploding:
 		explode()
 

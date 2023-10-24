@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dkidqk23c0r27" path="res://main/person/person.tscn" id="1_x6gf7"]
 [ext_resource type="Script" path="res://main/person/player/player.gd" id="2_hnbm1"]
-[ext_resource type="PackedScene" uid="uid://bku310um5b17" path="res://main/projectile/plasmoid/plasmoid.tscn" id="3_cr0xy"]
+[ext_resource type="PackedScene" uid="uid://u3xyqgwwklvl" path="res://main/projectile/bullet/bullet.tscn" id="3_iq26b"]
 [ext_resource type="Script" path="res://main/person/player/free_control_state.gd" id="3_xhkxq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yo4c"]
@@ -12,7 +12,7 @@ height = 1.5
 [node name="Player" groups=["player"] instance=ExtResource("1_x6gf7")]
 script = ExtResource("2_hnbm1")
 speed = 5.0
-projectile = ExtResource("3_cr0xy")
+projectile = ExtResource("3_iq26b")
 
 [node name="Manikin" parent="." index="0"]
 visible = false
