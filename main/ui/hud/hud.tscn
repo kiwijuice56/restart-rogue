@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpdhybjomvxo3"]
+[gd_scene load_steps=17 format=3 uid="uid://dpdhybjomvxo3"]
 
 [ext_resource type="Texture2D" uid="uid://dahbb25vx54m3" path="res://main/ui/hud/cross_hair.png" id="1_558tc"]
 [ext_resource type="Script" path="res://main/ui/hud/hud.gd" id="1_khdak"]
@@ -7,9 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://c3drfrnou8rd6" path="res://icon.svg" id="3_klyev"]
 [ext_resource type="AudioStream" uid="uid://bqvlit3erxbm0" path="res://main/ui/restart_jingle.ogg" id="6_3x86o"]
 [ext_resource type="Texture2D" uid="uid://bh17cpdkqv40u" path="res://main/ui/hud/reload_fill.png" id="7_dos2w"]
+[ext_resource type="Shader" path="res://main/ui/hud/vignette.gdshader" id="7_yyf1o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xx5rm"]
 shader = ExtResource("2_3nsbn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpbfg"]
+shader = ExtResource("7_yyf1o")
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ifxha"]
 length = 0.001
@@ -120,6 +127,42 @@ _data = {
 "restart": SubResource("Animation_2sn2t")
 }
 
+[sub_resource type="Animation" id="Animation_tutrk"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.4, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ug5ux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbmy4"]
+_data = {
+"RESET": SubResource("Animation_ug5ux"),
+"hurt": SubResource("Animation_tutrk")
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_khdak")
 
@@ -219,6 +262,12 @@ offset_right = 576.0
 offset_bottom = 324.0
 texture = ExtResource("3_klyev")
 
+[node name="Vignette" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_hpbfg")
+offset_right = 576.0
+offset_bottom = 324.0
+
 [node name="RestartJinglePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3x86o")
 volume_db = 14.0
@@ -227,3 +276,9 @@ volume_db = 14.0
 libraries = {
 "": SubResource("AnimationLibrary_balxu")
 }
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qbmy4")
+}
+speed_scale = 1.5

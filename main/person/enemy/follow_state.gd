@@ -21,5 +21,3 @@ func process(delta: float) -> void:
 		else:
 			controller.move_dir = controller.move_dir.move_toward(Vector2(), delta )
 		controller.camera.look_at(player.global_position + Vector3(0, 1.0, 0))
-		# controller.camera.rotation.x = 0
-		# controller.camera.rotation.z = 0

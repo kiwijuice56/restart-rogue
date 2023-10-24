@@ -6,8 +6,11 @@ func _ready() -> void:
 	player.health_changed.connect(_on_health_changed)
 	player.cooldown_started.connect(_on_cooldown_start)
 
-func _on_health_changed(health: float) -> void:
+func _on_health_changed(health: float, hurt: bool) -> void:
 	%HealthLabel.text = "[shake rate=20.0 level=5 connected=1]HP " + str(round(100 * health / player.max_health)) + "%[/shake]"
+	if hurt:
+		$AnimationPlayer2.stop()
+		$AnimationPlayer2.play("hurt")
 
 func _on_cooldown_start(cooldown: float) -> void:
 	var tween: Tween = get_tree().create_tween()

@@ -19,6 +19,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 # The state machine can manipulate these variables to control the person
 var move_dir: Vector2 # Input direction for movement
 var jumping: bool = false
+var hurt: bool = false
 
 var grav_vel: Vector3 
 var jump_vel: Vector3 
@@ -31,13 +32,14 @@ var shove: Vector3
 
 @onready var health: float = max_health:
 	set(h):
-		health_changed.emit(h)
+		health_changed.emit(h, hurt)
+		hurt = false
 		health = h
 
 var last_collider: Projectile
 
 signal cooldown_started(val)
-signal health_changed(val)
+signal health_changed(val, hurt)
 
 func _ready() -> void:
 	$MainHitbox.area_entered.connect(_on_hurt.bind(1.0))
@@ -58,6 +60,7 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 	if not is_player and not p.sender.is_player:
 		return 
 	
+	hurt = true
 	self.health -= p.damage * damage_multiplier
 	
 	walk_vel += p.momentum

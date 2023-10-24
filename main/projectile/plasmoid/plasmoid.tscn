@@ -651,7 +651,7 @@ material_override = SubResource("StandardMaterial3D_4sy7j")
 mesh = SubResource("TorusMesh_aim11")
 
 [node name="Ring2" type="MeshInstance3D" parent="." index="6"]
-transform = Transform3D(-2.41387e-07, 0.0666817, -2.41387e-07, 0, -2.41387e-07, -0.0666817, -0.0666817, -2.41387e-07, 8.73819e-13, 0, 0, 0)
+transform = Transform3D(-2.41387e-07, 0.0666817, -2.91475e-09, 0, -2.91475e-09, -0.0666817, -0.0666817, -2.41387e-07, 1.05514e-14, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_4sy7j")
 mesh = SubResource("TorusMesh_aim11")
 
