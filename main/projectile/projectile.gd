@@ -9,6 +9,7 @@ class_name Projectile extends Node3D
 @export var cooldown: float = 0.5
 @export var lifetime: float = 5.0
 @export var can_crit: bool = true
+@export var game_name: String
 
 var momentum: Vector3
 var sender: Person

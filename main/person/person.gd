@@ -27,6 +27,10 @@ var grav_vel: Vector3
 var jump_vel: Vector3 
 var walk_vel: Vector3 
 var shove: Vector3
+var restart_pills: int = 3:
+	set(v):
+		restart_changed.emit(v)
+		restart_pills = v
 
 @onready var camera: Camera3D = $Camera3D
 @onready var model: Node3D = $Manikin
@@ -42,6 +46,7 @@ var last_collider: Projectile
 
 signal cooldown_started(val)
 signal health_changed(val, hurt)
+signal restart_changed(val)
 
 func _ready() -> void:
 	$MainHitbox.area_entered.connect(_on_hurt.bind(1.0))
@@ -136,6 +141,11 @@ func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.basis.z) -> void:
 		return
 	
 	var new_projectile: Projectile = restart_projectile.instantiate() if restart else projectile.instantiate()
+	if restart and restart_pills <= 0:
+		return
+	if restart:
+		restart_pills -= 1
+	
 	new_projectile.sender = self
 	$ShootTimer.start(new_projectile.cooldown + (0 if is_player else randf() * cooldown_extra_max))
 	cooldown_started.emit($ShootTimer.wait_time)

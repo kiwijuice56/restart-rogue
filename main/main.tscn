@@ -18,6 +18,7 @@ script = ExtResource("1_x1f2p")
 player = NodePath("SubViewportContainer/SubViewport/Player")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+process_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -67,4 +68,5 @@ shadow_enabled = true
 omni_range = 23.52
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_vt5wc")]
+process_mode = 3
 player = NodePath("../SubViewportContainer/SubViewport/Player")

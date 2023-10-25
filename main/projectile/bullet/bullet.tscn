@@ -195,6 +195,7 @@ damage = 0.4
 mass = 0.2
 cooldown = 0.13
 lifetime = 2.0
+game_name = "electro spray"
 
 [node name="Area3D" parent="." index="0"]
 collision_mask = 5
