@@ -96,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0135225)
 target_position = Vector3(0, 0, -1)
 
 [node name="EnemyAmmoSpawn" type="Marker3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572964, -0.140394, -0.424873)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0431999, -0.140394, -0.420614)
 
 [node name="PlayerAmmoSpawn" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.309823, -0.116371, -0.185406)

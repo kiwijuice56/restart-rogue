@@ -194,6 +194,7 @@ gravity = -2.0
 damage = 0.4
 mass = 0.2
 cooldown = 0.13
+lifetime = 2.0
 
 [node name="Area3D" parent="." index="0"]
 collision_mask = 5
@@ -226,7 +227,8 @@ mesh = SubResource("QuadMesh_ip4v2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="." index="6"]
 stream = SubResource("AudioStreamRandomizer_uh3in")
-volume_db = -39.0
+volume_db = -44.0
+unit_size = 30.0
 
 [node name="BlastPlayer" type="AudioStreamPlayer3D" parent="." index="7"]
 stream = SubResource("AudioStreamRandomizer_lhwn2")
