@@ -687,6 +687,7 @@ panning_strength = 1.45
 
 [node name="BlastProjectile" parent="." index="11" instance=ExtResource("1_277x1")]
 damage = 0.25
+can_crit = false
 
 [node name="Area3D" parent="BlastProjectile" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10000)

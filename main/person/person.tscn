@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dkidqk23c0r27"]
+[gd_scene load_steps=20 format=3 uid="uid://dkidqk23c0r27"]
 
 [ext_resource type="Script" path="res://main/person/person.gd" id="1_x3rt7"]
 [ext_resource type="PackedScene" uid="uid://cvwooob2c2mkx" path="res://main/person/manikin.tscn" id="2_g75lx"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" path="res://main/person/state_machine/state.gd" id="4_nfwle"]
 [ext_resource type="AudioStream" uid="uid://blx2kbqvthkrb" path="res://main/person/60013__qubodup__whoosh.ogg" id="5_88xl6"]
 [ext_resource type="AudioStream" uid="uid://c4fcprb0cu1f8" path="res://main/person/494312__tannersound__impact-bass-crunch.wav" id="6_8uyyd"]
-[ext_resource type="AudioStream" uid="uid://b7f81ibkiddpb" path="res://main/person/617037__d4xx__bass-impact-2.wav" id="7_rer8a"]
+[ext_resource type="AudioStream" uid="uid://dyfrmbh1xth3a" path="res://main/person/hit1.ogg" id="7_8qe6l"]
+[ext_resource type="AudioStream" uid="uid://b3vfyjgw0ydbe" path="res://main/person/hit2.ogg" id="8_ie7rl"]
 [ext_resource type="AudioStream" uid="uid://cb5dsgmflaiqa" path="res://main/person/660769__madpancake__headshot-sound.ogg" id="8_so3v4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddnpo"]
@@ -45,9 +46,11 @@ stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_12esr"]
 random_pitch = 1.4
-streams_count = 1
-stream_0/stream = ExtResource("7_rer8a")
+streams_count = 2
+stream_0/stream = ExtResource("7_8qe6l")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_ie7rl")
+stream_1/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xmt8m"]
 random_pitch = 1.4
@@ -126,10 +129,10 @@ unit_size = 7.0
 
 [node name="HurtStreamPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_12esr")
-volume_db = 2.0
+volume_db = -3.0
 unit_size = 8.0
 
 [node name="HurtStreamPlayer2" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_xmt8m")
-volume_db = 2.0
+volume_db = -3.0
 unit_size = 8.0

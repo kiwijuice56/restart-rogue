@@ -1,67 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://u3xyqgwwklvl"]
+[gd_scene load_steps=17 format=3 uid="uid://u3xyqgwwklvl"]
 
 [ext_resource type="PackedScene" uid="uid://c1aljp1e64o74" path="res://main/projectile/projectile.tscn" id="1_tdikv"]
 [ext_resource type="PackedScene" uid="uid://cqvc7tpvfjkss" path="res://main/vfx/plasma/plasma_effect.tscn" id="2_cja4s"]
-[ext_resource type="AudioStream" uid="uid://dw3hjfphpmd7k" path="res://main/projectile/plasmoid/586915__newlocknew__powerful-blaster-shot-x2with-tail-and-explosion_1-28lrs.wav" id="3_264xi"]
+[ext_resource type="AudioStream" uid="uid://cdb5weplx7n0n" path="res://main/projectile/bullet/49678__ejfortin__energy-short-sword-7.wav" id="3_7wwha"]
+[ext_resource type="AudioStream" uid="uid://oqqr7jqsoh4q" path="res://main/projectile/bullet/49678__ejfortin__energy-short-sword.wav" id="4_dluja"]
+[ext_resource type="AudioStream" uid="uid://cjoqcq4p45brs" path="res://main/projectile/bullet/49693__ejfortin__energy-gloves.wav" id="5_a32et"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_36ko1"]
 radius = 0.7
-
-[sub_resource type="Animation" id="Animation_xu8wm"]
-resource_name = "charge"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_e8jw6"]
-resource_name = "explode"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Explosion:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Explosion:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.3, 0.3, 0.3), Vector3(0.32, 0.32, 0.32), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.1, 0.1, 0.1), Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_auci4"]
 length = 0.001
@@ -113,6 +59,98 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlastPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xu8wm"]
+resource_name = "charge"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_e8jw6"]
+resource_name = "explode"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.3, 0.3, 0.3), Vector3(0.32, 0.32, 0.32), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlastPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iidv6"]
 _data = {
@@ -136,10 +174,18 @@ rings = 3
 [sub_resource type="QuadMesh" id="QuadMesh_ip4v2"]
 size = Vector2(0.4, 0.4)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uh3in"]
+random_pitch = 1.43
+streams_count = 2
+stream_0/stream = ExtResource("3_7wwha")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_dluja")
+stream_1/weight = 1.0
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lhwn2"]
-random_pitch = 1.5
+random_pitch = 1.2
 streams_count = 1
-stream_0/stream = ExtResource("3_264xi")
+stream_0/stream = ExtResource("5_a32et")
 stream_0/weight = 1.0
 
 [node name="Bullet" instance=ExtResource("1_tdikv")]
@@ -162,12 +208,13 @@ libraries = {
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(1.91069e-16, 4.37114e-09, 0.1, 0.1, -4.37114e-09, 2.64698e-23, 4.37114e-09, 0.1, -4.37114e-09, 0, 0, 0)
+transform = Transform3D(1.91069e-16, 4.37114e-09, 0.1, 0.1, -4.37114e-09, -3.57342e-22, 4.37114e-09, 0.1, -4.37114e-09, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_obky3")
 mesh = SubResource("CapsuleMesh_1qfrp")
 
 [node name="Explosion" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_obky3")
 mesh = SubResource("SphereMesh_il5sl")
 
@@ -178,10 +225,9 @@ instance_shader_parameters/threshold = 0.02
 mesh = SubResource("QuadMesh_ip4v2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="." index="6"]
-volume_db = -32.0
-pitch_scale = 0.5
+stream = SubResource("AudioStreamRandomizer_uh3in")
+volume_db = -39.0
 
 [node name="BlastPlayer" type="AudioStreamPlayer3D" parent="." index="7"]
 stream = SubResource("AudioStreamRandomizer_lhwn2")
-volume_db = -32.0
-pitch_scale = 3.0
+volume_db = -19.0

@@ -53,6 +53,8 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 	
 	if p == last_collider:
 		return
+	if damage_multiplier > 1.0 and not p.can_crit:
+		damage_multiplier = 1.0
 	last_collider = p
 	
 	if p.sender == self:
@@ -138,7 +140,7 @@ func shoot(shoot_dir: Vector3 = -camera.basis.z) -> void:
 	cooldown_started.emit($ShootTimer.wait_time)
 	
 	if is_player:
-		self.health = max(0.01, health - new_projectile.cost)
+		self.health = max(0.1, health - new_projectile.cost)
 	
 	projectile_spawn.add_child(new_projectile)
 	
