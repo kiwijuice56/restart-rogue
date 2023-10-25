@@ -22,6 +22,8 @@ func process(delta: float) -> void:
 	# can't be done in input, does not detect held presses
 	if Input.is_action_pressed("shoot"):
 		controller.shoot()
+	if Input.is_action_just_pressed("shoot2"):
+		controller.shoot(true)
 	
 	_handle_joypad_camera_rotation(delta)
 

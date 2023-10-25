@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfq5pcosfef10"]
+[gd_scene load_steps=9 format=3 uid="uid://bfq5pcosfef10"]
 
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
 [ext_resource type="Script" path="res://main/mouse_fix.gd" id="1_utrk4"]
 [ext_resource type="PackedScene" uid="uid://bfy3kf1ukc45o" path="res://main/person/enemy/enemy.tscn" id="1_vxshq"]
+[ext_resource type="Script" path="res://main/main.gd" id="1_x1f2p"]
 [ext_resource type="PackedScene" uid="uid://u3xyqgwwklvl" path="res://main/projectile/bullet/bullet.tscn" id="3_dmx04"]
 [ext_resource type="PackedScene" uid="uid://dpdhybjomvxo3" path="res://main/ui/hud/hud.tscn" id="5_vt5wc"]
 
@@ -12,7 +13,9 @@ size = Vector3(20, 0.5, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5odt"]
 size = Vector3(20, 0.5, 20)
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("player")]
+script = ExtResource("1_x1f2p")
+player = NodePath("SubViewportContainer/SubViewport/Player")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15

@@ -14,7 +14,7 @@ func _on_area_entered(area: Area3D) -> void:
 
 func process(delta: float) -> void:
 	if player:
-		controller.shoot()
+		controller.shoot(false)
 		if player.global_position.distance_to(controller.global_position) > 4.0:
 			var dir: Vector3 = controller.global_position.direction_to(player.global_position)
 			controller.move_dir = controller.move_dir.move_toward(Vector2(dir.x, dir.z).normalized(), delta * 8)

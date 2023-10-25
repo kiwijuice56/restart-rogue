@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 @export var projectile_spawn: Marker3D
 @export var projectile: PackedScene
+@export var restart_projectile: PackedScene = preload("res://main/projectile/restart_pill/restart_pill.tscn")
 @export var cooldown_extra_max: float = 0.4
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -128,13 +129,13 @@ func _animate() -> void:
 	model.rotation.y = camera.rotation.y
 	model.get_node("AnimationTree").set("parameters/Normal/run_amount/blend_amount", run_strength)
 
-func shoot(shoot_dir: Vector3 = -camera.basis.z) -> void:
+func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.basis.z) -> void:
 	if not $ShootTimer.is_stopped():
 		return
 	if not is_player and model.get_node("GameAnimationPlayer").is_playing():
 		return
 	
-	var new_projectile: Projectile = projectile.instantiate()
+	var new_projectile: Projectile = restart_projectile.instantiate() if restart else projectile.instantiate()
 	new_projectile.sender = self
 	$ShootTimer.start(new_projectile.cooldown + (0 if is_player else randf() * cooldown_extra_max))
 	cooldown_started.emit($ShootTimer.wait_time)
