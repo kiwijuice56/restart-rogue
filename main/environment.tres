@@ -13,4 +13,10 @@ process_mode = 3
 [resource]
 background_mode = 2
 sky = SubResource("Sky_52r7w")
+ssao_enabled = true
 glow_enabled = true
+fog_light_color = Color(0.14902, 0.0431373, 0.141176, 1)
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(1, 0.94902, 1, 1)
+adjustment_enabled = true
+adjustment_contrast = 1.1

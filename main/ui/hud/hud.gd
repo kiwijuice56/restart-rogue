@@ -4,6 +4,7 @@ class_name HUD extends CanvasLayer
 
 func _ready() -> void:
 	player.health_changed.connect(_on_health_changed)
+	player.score_changed.connect(_on_score_changed)
 	player.cooldown_started.connect(_on_cooldown_start)
 	player.restart_changed.connect(_on_restart_changed)
 
@@ -12,6 +13,9 @@ func _on_health_changed(health: float, hurt: bool) -> void:
 	if hurt:
 		$AnimationPlayer2.stop()
 		$AnimationPlayer2.play("hurt")
+
+func _on_score_changed(score: int) -> void:
+	%ScoreLabel.text = "[shake rate=20.0 level=5 connected=1]SCORE " + str(player.score) + "[/shake]"
 
 func _on_restart_changed(val: int) -> void:
 	%RestartLabel.text = "[shake rate=20.0 level=5 connected=1]" + str(val) + " RESTART[/shake]"

@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
 @export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
 @export var is_player: bool = false
+@export var score_give: float = 100
 
 @export var projectile_spawn: Marker3D
 @export var projectile: PackedScene
@@ -22,6 +23,10 @@ var move_dir: Vector2 # Input direction for movement
 var jumping: bool = false
 var hurt: bool = false
 var dead: bool = false
+var score: int = 0:
+	set(s):
+		score = s
+		score_changed.emit(s)
 
 var grav_vel: Vector3 
 var jump_vel: Vector3 
@@ -47,6 +52,7 @@ var last_collider: Projectile
 signal cooldown_started(val)
 signal health_changed(val, hurt)
 signal restart_changed(val)
+signal score_changed(val)
 
 func _ready() -> void:
 	$MainHitbox.area_entered.connect(_on_hurt.bind(1.0))
@@ -78,6 +84,8 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 	walk_vel += p.momentum
 	
 	if health <= 0:
+		if is_instance_valid(p.sender):
+			p.sender.score += score_give 
 		die()
 	else:
 		if not is_player:
