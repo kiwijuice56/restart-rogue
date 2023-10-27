@@ -23,6 +23,8 @@ var move_dir: Vector2 # Input direction for movement
 var jumping: bool = false
 var hurt: bool = false
 var dead: bool = false
+var on_ground: bool = false
+
 var score: int = 0:
 	set(s):
 		score = s
@@ -98,6 +100,13 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.process(delta)
 	velocity = _gravity(delta) + _jump(delta) + _walk(delta, is_player)
+	
+	if not is_on_floor():
+		on_ground = false
+	if is_on_floor() and not on_ground:
+		on_ground = true
+		if is_player:
+			$FallStreamPlayer.play()
 	
 	_animate()
 	move_and_slide()

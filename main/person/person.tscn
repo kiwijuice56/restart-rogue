@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dkidqk23c0r27"]
+[gd_scene load_steps=23 format=3 uid="uid://dkidqk23c0r27"]
 
 [ext_resource type="Script" path="res://main/person/person.gd" id="1_x3rt7"]
 [ext_resource type="PackedScene" uid="uid://cvwooob2c2mkx" path="res://main/person/manikin.tscn" id="2_g75lx"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://dyfrmbh1xth3a" path="res://main/person/hit1.ogg" id="7_8qe6l"]
 [ext_resource type="AudioStream" uid="uid://b3vfyjgw0ydbe" path="res://main/person/hit2.ogg" id="8_ie7rl"]
 [ext_resource type="AudioStream" uid="uid://cb5dsgmflaiqa" path="res://main/person/660769__madpancake__headshot-sound.ogg" id="8_so3v4"]
+[ext_resource type="AudioStream" uid="uid://cifygmic0cses" path="res://main/person/player/step1.ogg" id="10_2e0uf"]
+[ext_resource type="AudioStream" uid="uid://blevcrvqaoemr" path="res://main/person/player/step2.ogg" id="11_julye"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddnpo"]
 radius = 0.3
@@ -57,6 +59,14 @@ random_pitch = 1.4
 streams_count = 1
 stream_0/stream = ExtResource("8_so3v4")
 stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_41evc"]
+random_pitch = 1.47
+streams_count = 2
+stream_0/stream = ExtResource("10_2e0uf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_julye")
+stream_1/weight = 1.0
 
 [node name="Person" type="CharacterBody3D" node_paths=PackedStringArray("projectile_spawn")]
 collision_layer = 2
@@ -140,3 +150,6 @@ unit_size = 8.0
 
 [node name="FloorCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30596, -0.628032)
+
+[node name="FallStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_41evc")

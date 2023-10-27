@@ -39,5 +39,6 @@ camera_sens = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280401, 0)
+visible = false
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_r1k3a")
