@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6458mmtq8ipb" path="res://main/level/Level.tscn" id="1_8rolb"]
 [ext_resource type="PackedScene" uid="uid://bfy3kf1ukc45o" path="res://main/person/enemy/enemy.tscn" id="2_qptrw"]
 [ext_resource type="Script" path="res://main/level/fade_light.gd" id="2_rne8c"]
-[ext_resource type="PackedScene" uid="uid://u3xyqgwwklvl" path="res://main/projectile/bullet/bullet.tscn" id="3_lwuyj"]
+[ext_resource type="PackedScene" uid="uid://dup5j67ucvsgi" path="res://main/person/enemy/bomb_guy.tscn" id="4_gyx0u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dn17e"]
 size = Vector3(6, 24, 6)
@@ -54,43 +54,60 @@ mesh = SubResource("BoxMesh_qi0qc")
 
 [node name="Enemy" parent="." index="6" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 1.49775, 1.74432, -33.2471)
-projectile = ExtResource("3_lwuyj")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="7"]
+[node name="Enemy2" parent="." index="7" instance=ExtResource("2_qptrw")]
+transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 7.56162, 1.74432, -57.9423)
+
+[node name="Enemy3" parent="." index="8" instance=ExtResource("2_qptrw")]
+transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 6.24935, 1.74432, -60.1358)
+
+[node name="Enemy4" parent="." index="9" instance=ExtResource("2_qptrw")]
+transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 8.41388, 1.74432, -60.1358)
+
+[node name="Enemy5" parent="." index="10" instance=ExtResource("2_qptrw")]
+transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 8.41388, 1.74432, -56.6342)
+
+[node name="BombGuy" parent="." index="11" instance=ExtResource("4_gyx0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3434, 1.5431, -50.0209)
+
+[node name="BombGuy2" parent="." index="12" instance=ExtResource("4_gyx0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66179, 2.33711, -55.8154)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="13"]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, -1.43839, -11.5366, -23.2109)
 mesh = SubResource("BoxMesh_qi0qc")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="8"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." index="14"]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, -2.9208, -6.95365, -36.8217)
 mesh = SubResource("BoxMesh_qi0qc")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="." index="9"]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="." index="15"]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 2.84761, -4.67573, -64.0768)
 mesh = SubResource("BoxMesh_qi0qc")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="." index="10"]
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="." index="16"]
 transform = Transform3D(0.869624, 0, -0.493715, 0, 1, 0, 0.493715, 0, 0.869624, 15.0778, -6.10345, -60.4666)
 mesh = SubResource("BoxMesh_qi0qc")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="." index="11"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." index="17"]
 transform = Transform3D(0.825547, 0, 0.564333, 0, 1, 0, -0.564333, 0, 0.825547, -1.94254, -10.7465, -44.0344)
 mesh = SubResource("BoxMesh_qi0qc")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="." index="12"]
-transform = Transform3D(0.350731, 0, 0.936476, 0, 1, 0, -0.936476, 0, 0.350731, 1.3303, -12.7625, -49.795)
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." index="18"]
+transform = Transform3D(0.350731, 0, 0.936476, 0, 1, 0, -0.936476, 0, 0.350731, 1.3303, -11.2194, -49.795)
 mesh = SubResource("BoxMesh_r526r")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="." index="13"]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." index="19"]
 transform = Transform3D(0.780169, 0, 0.625569, 0, 1, 0, -0.625569, 0, 0.780169, -4.15906, -11.6713, -52.3198)
 mesh = SubResource("BoxMesh_r526r")
 
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="." index="14"]
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="." index="20"]
 transform = Transform3D(0.780169, 0, 0.625569, 0, 1, 0, -0.625569, 0, 0.780169, 29.9781, -13.6079, -76.6567)
 mesh = SubResource("BoxMesh_r526r")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="15"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4419, 3.7707, -3.08507)
-light_color = Color(1, 0.803922, 1, 1)
+light_color = Color(0.741176, 0.266667, 0.384314, 1)
 light_energy = 9.635
 shadow_enabled = true
 omni_range = 9.217
@@ -103,9 +120,24 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D/Area3D" index="0"]
 shape = SubResource("SphereShape3D_n104d")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." index="16"]
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7707, -16.2351)
+light_color = Color(0.835294, 0.32549, 0.615686, 1)
+light_energy = 4.175
+shadow_enabled = true
+omni_range = 13.696
+script = ExtResource("2_rne8c")
+
+[node name="Area3D" type="Area3D" parent="OmniLight3D3" index="0"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D3/Area3D" index="0"]
+shape = SubResource("SphereShape3D_kqpqa")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7707, -35.9446)
-light_color = Color(1, 0.803922, 1, 1)
+light_color = Color(0.909804, 0.52549, 0.862745, 1)
 light_energy = 4.175
 shadow_enabled = true
 omni_range = 13.696
@@ -118,10 +150,10 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D2/Area3D" index="0"]
 shape = SubResource("SphereShape3D_kqpqa")
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="." index="17"]
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7707, -50.6576)
-light_color = Color(1, 0.803922, 1, 1)
-light_energy = 4.175
+light_color = Color(0.862745, 0.607843, 0.94902, 1)
+light_energy = 5.318
 shadow_enabled = true
 omni_range = 13.696
 script = ExtResource("2_rne8c")
@@ -133,10 +165,11 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D4/Area3D" index="0"]
 shape = SubResource("SphereShape3D_kqpqa")
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="." index="18"]
+[node name="OmniLight3D5" type="OmniLight3D" parent="." index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0812, 3.7707, -62.6766)
-light_color = Color(0.92549, 0.843137, 0.980392, 1)
-light_energy = 4.175
+light_color = Color(0.705882, 0.505882, 0.968627, 1)
+light_energy = 5.826
+shadow_enabled = true
 omni_range = 13.696
 script = ExtResource("2_rne8c")
 
@@ -147,17 +180,7 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D5/Area3D" index="0"]
 shape = SubResource("SphereShape3D_kqpqa")
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="." index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7707, -16.2351)
-light_color = Color(1, 0.803922, 1, 1)
-light_energy = 4.175
-shadow_enabled = true
-omni_range = 13.696
-script = ExtResource("2_rne8c")
-
-[node name="Area3D" type="Area3D" parent="OmniLight3D3" index="0"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D3/Area3D" index="0"]
-shape = SubResource("SphereShape3D_kqpqa")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="26"]
+transform = Transform3D(0.796224, -2.64455e-08, 0.605002, -0.605002, -3.4804e-08, 0.796224, 0, -1, -4.37114e-08, 0, 5.85484, 0)
+light_color = Color(0.811765, 0.905882, 1, 1)
+light_energy = 0.049

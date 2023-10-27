@@ -81,7 +81,7 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 		return 
 	
 	hurt = true
-	self.health -= p.damage * damage_multiplier
+	self.health -= p.damage * damage_multiplier * (0.5 if is_player else 1.0)
 	
 	walk_vel += p.momentum
 	
@@ -167,6 +167,9 @@ func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.global_basis.z) -
 	$ShootTimer.start(new_projectile.cooldown + (0 if is_player else randf() * cooldown_extra_max))
 	cooldown_started.emit($ShootTimer.wait_time)
 	
+	if not is_instance_valid(projectile_spawn):
+		return
+	
 	if is_player:
 		self.health = max(0.1, health - new_projectile.cost)
 	
@@ -196,6 +199,7 @@ func die() -> void:
 	$DeadStreamPlayer.play()
 	$HeadHitbox/CollisionShape3D.call_deferred("set", "disabled", true)
 	$MainHitbox/CollisionShape3D.call_deferred("set", "disabled", true)
+	call_deferred("set", "collision_layer", 0)
 	set_physics_process(false)
 	
 	# Visuals

@@ -39,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("")
+tracks/2/path = NodePath("MeshInstance3D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -51,7 +51,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("JumpStreamPlayer")
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -79,7 +79,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("JumpStreamPlayer")
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,7 +91,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("")
+tracks/1/path = NodePath("MeshInstance3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -131,7 +131,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("")
+tracks/2/path = NodePath("MeshInstance3D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -193,8 +193,8 @@ stream_0/weight = 1.0
 
 [node name="RestartPill" instance=ExtResource("1_5j7lf")]
 script = ExtResource("2_h1j7j")
-speed = 19.0
-gravity = -2.0
+speed = 16.0
+gravity = -1.0
 damage = 0.0
 mass = 0.0
 cooldown = 0.13
@@ -216,15 +216,18 @@ libraries = {
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1.91069e-16, 4.37114e-09, 0.1, 0.1, -4.37114e-09, -3.57342e-22, 4.37114e-09, 0.1, -4.37114e-09, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_q8ref")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_m7602")
 
 [node name="Explosion" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_obky3")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_il5sl")
 
 [node name="PlasmaEffect" parent="." index="4" instance=ExtResource("2_jbqbq")]
+cast_shadow = 0
 instance_shader_parameters/color = Color(0.933333, 0.435294, 0.819608, 1)
 instance_shader_parameters/scale = 0.85
 instance_shader_parameters/threshold = 0.02
