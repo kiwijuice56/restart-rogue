@@ -25,6 +25,7 @@ gdscript/warnings/unused_signal=0
 
 window/size/viewport_width=576
 window/size/viewport_height=324
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [input]
@@ -97,4 +98,5 @@ shoot2={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
 environment/defaults/default_environment="res://main/environment.tres"

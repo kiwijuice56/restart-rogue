@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv3webgoqog8x"]
+[gd_scene load_steps=7 format=3 uid="uid://bv3webgoqog8x"]
 
 [ext_resource type="PackedScene" uid="uid://dkidqk23c0r27" path="res://main/person/person.tscn" id="1_x6gf7"]
 [ext_resource type="Script" path="res://main/person/player/player.gd" id="2_hnbm1"]
 [ext_resource type="PackedScene" uid="uid://u3xyqgwwklvl" path="res://main/projectile/bullet/bullet.tscn" id="3_iq26b"]
 [ext_resource type="Script" path="res://main/person/player/free_control_state.gd" id="3_xhkxq"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yo4c"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rypy4"]
+size = Vector3(0.5, 1.5, 0.5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r1k3a"]
 radius = 0.2
-height = 1.5
+height = 1.0
 
 [node name="Player" groups=["player"] instance=ExtResource("1_x6gf7")]
 script = ExtResource("2_hnbm1")
@@ -18,11 +21,12 @@ projectile = ExtResource("3_iq26b")
 visible = false
 
 [node name="CollisionShape3D" parent="." index="3"]
-shape = SubResource("CapsuleShape3D_7yo4c")
+shape = SubResource("BoxShape3D_rypy4")
 
 [node name="Camera3D" parent="." index="4"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.15526, 0)
 current = true
+far = 159.05
 
 [node name="Weapon" type="Node3D" parent="Camera3D" index="1"]
 
@@ -32,3 +36,8 @@ state = NodePath("FreeControl")
 [node name="FreeControl" type="Node" parent="StateMachine" index="1"]
 script = ExtResource("3_xhkxq")
 camera_sens = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280401, 0)
+cast_shadow = 3
+mesh = SubResource("CapsuleMesh_r1k3a")

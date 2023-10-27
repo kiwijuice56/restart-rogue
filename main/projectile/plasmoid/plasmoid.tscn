@@ -617,11 +617,13 @@ game_name = "plasma bomb"
 
 [node name="PlasmaEffect" parent="." index="0" instance=ExtResource("2_quuje")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+cast_shadow = 0
 instance_shader_parameters/color = Color(1, 0.94902, 0.458824, 1)
 
 [node name="PlasmaEffectExplode" parent="." index="1" instance=ExtResource("2_quuje")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 visible = false
+cast_shadow = 0
 instance_shader_parameters/color = Color(0.658824, 1, 1, 1)
 instance_shader_parameters/offset = Vector2(1.875, 1)
 instance_shader_parameters/scale = 0.735
@@ -637,22 +639,26 @@ shape = SubResource("SphereShape3D_g2wo3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0, 0.0449978, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_funsq")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_nqsvi")
 
 [node name="Sphere2" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_avq8g")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_ck4ip")
 
 [node name="Ring1" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_4sy7j")
+cast_shadow = 0
 mesh = SubResource("TorusMesh_aim11")
 
 [node name="Ring2" type="MeshInstance3D" parent="." index="6"]
 transform = Transform3D(-2.41387e-07, 0.0666817, -2.91475e-09, 0, -2.91475e-09, -0.0666817, -0.0666817, -2.41387e-07, 1.05514e-14, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_4sy7j")
+cast_shadow = 0
 mesh = SubResource("TorusMesh_aim11")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="7"]

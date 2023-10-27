@@ -92,6 +92,7 @@ mesh = SubResource("BoxMesh_r526r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4419, 3.7707, -3.08507)
 light_color = Color(1, 0.803922, 1, 1)
 light_energy = 9.635
+shadow_enabled = true
 omni_range = 9.217
 script = ExtResource("2_rne8c")
 
@@ -106,6 +107,7 @@ shape = SubResource("SphereShape3D_n104d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7707, -35.9446)
 light_color = Color(1, 0.803922, 1, 1)
 light_energy = 4.175
+shadow_enabled = true
 omni_range = 13.696
 script = ExtResource("2_rne8c")
 
@@ -120,6 +122,7 @@ shape = SubResource("SphereShape3D_kqpqa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7707, -50.6576)
 light_color = Color(1, 0.803922, 1, 1)
 light_energy = 4.175
+shadow_enabled = true
 omni_range = 13.696
 script = ExtResource("2_rne8c")
 
@@ -148,6 +151,7 @@ shape = SubResource("SphereShape3D_kqpqa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7707, -16.2351)
 light_color = Color(1, 0.803922, 1, 1)
 light_energy = 4.175
+shadow_enabled = true
 omni_range = 13.696
 script = ExtResource("2_rne8c")
 
