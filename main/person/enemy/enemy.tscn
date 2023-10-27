@@ -23,6 +23,10 @@ state = NodePath("Follow")
 [node name="Follow" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("detection_area")]
 script = ExtResource("2_omewd")
 detection_area = NodePath("../../DetectionArea3D")
+equilibrium_distance = 5.0
+
+[node name="Timer" type="Timer" parent="StateMachine/Follow" index="0"]
+one_shot = true
 
 [node name="DetectionArea3D" type="Area3D" parent="." index="7"]
 collision_layer = 0

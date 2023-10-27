@@ -609,7 +609,6 @@ stream_0/weight = 1.0
 radius = 1.5
 
 [node name="Plasmoid" instance=ExtResource("1_277x1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101616, 0, 0)
 script = ExtResource("2_winp2")
 speed = 15.0
 damage = 2.0

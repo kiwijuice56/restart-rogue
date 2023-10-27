@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfq5pcosfef10"]
+[gd_scene load_steps=7 format=3 uid="uid://bfq5pcosfef10"]
 
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
 [ext_resource type="Script" path="res://main/mouse_fix.gd" id="1_utrk4"]
-[ext_resource type="PackedScene" uid="uid://bfy3kf1ukc45o" path="res://main/person/enemy/enemy.tscn" id="1_vxshq"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_x1f2p"]
-[ext_resource type="PackedScene" uid="uid://u3xyqgwwklvl" path="res://main/projectile/bullet/bullet.tscn" id="3_dmx04"]
-[ext_resource type="PackedScene" uid="uid://bku310um5b17" path="res://main/projectile/plasmoid/plasmoid.tscn" id="5_voeek"]
+[ext_resource type="PackedScene" uid="uid://cg63thh1h5ifl" path="res://main/projectile/bullet/bullet_medium.tscn" id="5_jkruv"]
 [ext_resource type="PackedScene" uid="uid://dpdhybjomvxo3" path="res://main/ui/hud/hud.tscn" id="5_vt5wc"]
 [ext_resource type="PackedScene" uid="uid://chqeialhqd37q" path="res://main/level/level_one.tscn" id="7_3oey0"]
 
@@ -32,22 +30,13 @@ size_2d_override = Vector2i(576, 324)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Enemy" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_vxshq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -48.033)
-projectile = ExtResource("3_dmx04")
-cooldown_extra_max = 0.3
-
-[node name="Enemy2" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_vxshq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00919, 1, -46.4867)
-cooldown_extra_max = 0.3
+[node name="LevelOne" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_3oey0")]
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_r1ii1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69181, 0.604359)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69181, -4.39564)
 is_player = true
-projectile = ExtResource("5_voeek")
+projectile = ExtResource("5_jkruv")
 cooldown_extra_max = 0.4
-
-[node name="LevelOne" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_3oey0")]
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_vt5wc")]
 process_mode = 3

@@ -142,7 +142,7 @@ func _animate() -> void:
 	model.rotation.y = camera.rotation.y
 	model.get_node("AnimationTree").set("parameters/Normal/run_amount/blend_amount", run_strength)
 
-func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.basis.z) -> void:
+func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.global_basis.z) -> void:
 	if not $ShootTimer.is_stopped():
 		return
 	if not is_player and model.get_node("GameAnimationPlayer").is_playing():
@@ -163,15 +163,14 @@ func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.basis.z) -> void:
 	
 	projectile_spawn.add_child(new_projectile)
 	
-	
 	new_projectile.global_position = projectile_spawn.global_position
-	new_projectile.dir = shoot_dir.rotated(Vector3(0, 1, 0), .05 + (randf()-0.5) * 0.03).rotated(Vector3(1, 0, 0), -.07 + (randf()-0.5) * 0.03)
-	
+	if is_player: new_projectile.dir = shoot_dir.rotated(Vector3(0, 1, 0), .05 + (randf()-0.5) * 0.03).rotated(Vector3(1, 0, 0), -.07 + (randf()-0.5) * 0.03)
+	else: new_projectile.dir = shoot_dir
 	await new_projectile.start()
 	
 	projectile_spawn.remove_child(new_projectile)
 	get_tree().get_root().add_child(new_projectile)
-	new_projectile.rotation = camera.rotation
+	new_projectile.global_rotation = camera.global_rotation
 	new_projectile.global_position =  projectile_spawn.global_position
 
 func die() -> void:
@@ -190,3 +189,8 @@ func die() -> void:
 	var timer: SceneTreeTimer = get_tree().create_timer(2.0)
 	await timer.timeout
 	queue_free()
+
+func will_fall() -> bool:
+	$FloorCast.position = walk_vel / 16
+	$FloorCast.force_raycast_update()
+	return not $FloorCast.is_colliding()

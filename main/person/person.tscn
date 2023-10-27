@@ -96,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0135225)
 target_position = Vector3(0, 0, -1)
 
 [node name="EnemyAmmoSpawn" type="Marker3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0431999, -0.140394, -0.420614)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0219024, -0.140394, -0.420614)
 
 [node name="PlayerAmmoSpawn" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.309823, -0.116371, -0.185406)
@@ -136,3 +136,6 @@ unit_size = 8.0
 stream = SubResource("AudioStreamRandomizer_xmt8m")
 volume_db = -3.0
 unit_size = 8.0
+
+[node name="FloorCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30596, -0.628032)
