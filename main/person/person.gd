@@ -164,7 +164,17 @@ func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.global_basis.z) -
 	projectile_spawn.add_child(new_projectile)
 	
 	new_projectile.global_position = projectile_spawn.global_position
-	if is_player: new_projectile.dir = shoot_dir.rotated(Vector3(0, 1, 0), .05 + (randf()-0.5) * 0.03).rotated(Vector3(1, 0, 0), -.07 + (randf()-0.5) * 0.03)
+	if is_player: 
+		var real_dir: Vector3 
+		if $Camera3D/AimRayCast3D.is_colliding():
+			real_dir =  $Camera3D/AimRayCast3D.get_collision_point()   - projectile_spawn.global_position
+			print(real_dir)
+		else:
+			var rGlobalOrigin = $Camera3D/AimRayCast3D.to_global(Vector3.ZERO) # or r.global_transform.origin
+			var rGlobalCastToEndpoint = $Camera3D/AimRayCast3D.to_global($Camera3D/AimRayCast3D.target_position) # or r.global_transform * r.cast_to # or r.global_transform.xform(r.cast_to)
+			var rGlobalCastToVector = rGlobalCastToEndpoint - rGlobalOrigin
+			real_dir =rGlobalCastToEndpoint -  projectile_spawn.global_position 
+		new_projectile.dir = real_dir.normalized()# shoot_dir.rotated( Vector3(1, 1, 0).normalized(), .13 + new_projectile.bloom *  (randf()-0.5) * 0.03).rotated(Vector3(1, 0, 0), -.07 + (randf()-0.5) * 0.03)
 	else: new_projectile.dir = shoot_dir
 	await new_projectile.start()
 	

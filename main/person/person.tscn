@@ -93,7 +93,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15526, 0)
 
 [node name="AimRayCast3D" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0135225)
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -64)
+collision_mask = 7
 
 [node name="EnemyAmmoSpawn" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0219024, -0.140394, -0.420614)
