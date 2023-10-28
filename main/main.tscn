@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfq5pcosfef10"]
+[gd_scene load_steps=8 format=3 uid="uid://bfq5pcosfef10"]
 
 [ext_resource type="PackedScene" uid="uid://bv3webgoqog8x" path="res://main/person/player/player.tscn" id="1_r1ii1"]
 [ext_resource type="Script" path="res://main/mouse_fix.gd" id="1_utrk4"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_x1f2p"]
 [ext_resource type="PackedScene" uid="uid://cg63thh1h5ifl" path="res://main/projectile/bullet/bullet_medium.tscn" id="5_jkruv"]
 [ext_resource type="PackedScene" uid="uid://dpdhybjomvxo3" path="res://main/ui/hud/hud.tscn" id="5_vt5wc"]
+[ext_resource type="AudioStream" uid="uid://c7svu340rx563" path="res://main/music/Harmful or Fatal.mp3" id="6_w3ba8"]
 [ext_resource type="PackedScene" uid="uid://chqeialhqd37q" path="res://main/level/level_one.tscn" id="7_3oey0"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("player")]
@@ -33,10 +34,14 @@ render_target_update_mode = 4
 [node name="LevelOne" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_3oey0")]
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_r1ii1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69181, -4.39564)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67879, -34.0477)
 is_player = true
 projectile = ExtResource("5_jkruv")
 cooldown_extra_max = 0.4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport"]
+stream = ExtResource("6_w3ba8")
+autoplay = true
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_vt5wc")]
 process_mode = 3

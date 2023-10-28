@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://bku310um5b17"]
+[gd_scene load_steps=22 format=3 uid="uid://bku310um5b17"]
 
 [ext_resource type="PackedScene" uid="uid://c1aljp1e64o74" path="res://main/projectile/projectile.tscn" id="1_277x1"]
 [ext_resource type="PackedScene" uid="uid://cqvc7tpvfjkss" path="res://main/vfx/plasma/plasma_effect.tscn" id="2_quuje"]
 [ext_resource type="Script" path="res://main/projectile/plasmoid/plasmoid.gd" id="2_winp2"]
-[ext_resource type="Shader" path="res://main/projectile/plasmoid/trail.gdshader" id="3_yqp2e"]
-[ext_resource type="Shader" path="res://main/projectile/plasmoid/trail_quad.gdshader" id="4_h37wo"]
+[ext_resource type="PackedScene" uid="uid://vkgxfl8d7n21" path="res://main/projectile/trail.tscn" id="4_6bpll"]
 [ext_resource type="AudioStream" uid="uid://clw5o4abgcjv2" path="res://main/projectile/plasmoid/440146__dpren__scifi-gun-plasma-slinger.wav" id="5_hek3y"]
 [ext_resource type="AudioStream" uid="uid://dw3hjfphpmd7k" path="res://main/projectile/plasmoid/586915__newlocknew__powerful-blaster-shot-x2with-tail-and-explosion_1-28lrs.wav" id="6_x11i4"]
 
@@ -40,24 +39,6 @@ albedo_color = Color(3, 3, 3, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_aim11"]
 inner_radius = 0.8
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q0ue8"]
-shader = ExtResource("3_yqp2e")
-
-[sub_resource type="Gradient" id="Gradient_n250e"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1.84, 4, 4, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_qks5l"]
-gradient = SubResource("Gradient_n250e")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ag2x5"]
-render_priority = 0
-shader = ExtResource("4_h37wo")
-shader_parameter/tex = SubResource("GradientTexture1D_qks5l")
-
-[sub_resource type="QuadMesh" id="QuadMesh_k3f4y"]
-material = SubResource("ShaderMaterial_ag2x5")
 
 [sub_resource type="Animation" id="Animation_ew2y5"]
 length = 0.001
@@ -661,16 +642,7 @@ material_override = SubResource("StandardMaterial3D_4sy7j")
 cast_shadow = 0
 mesh = SubResource("TorusMesh_aim11")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 0, 0)
-emitting = false
-amount = 16
-lifetime = 16.0
-speed_scale = 64.0
-fixed_fps = 64
-visibility_aabb = AABB(-5.5117, -73.6809, -4.78121, 11.0234, 147.362, 9.56243)
-process_material = SubResource("ShaderMaterial_q0ue8")
-draw_pass_1 = SubResource("QuadMesh_k3f4y")
+[node name="GPUParticles3D" parent="." index="7" instance=ExtResource("4_6bpll")]
 
 [node name="AnimationPlayer" parent="." index="8"]
 libraries = {

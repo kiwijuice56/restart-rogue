@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://btva5gcm140jq"]
+
+[ext_resource type="PackedScene" uid="uid://bfy3kf1ukc45o" path="res://main/person/enemy/enemy.tscn" id="1_q22j4"]
+[ext_resource type="PackedScene" uid="uid://r3mitg2yc1ua" path="res://main/projectile/bullet/large_bullet.tscn" id="2_7mxdq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_orq0i"]
+radius = 24.0
+
+[node name="RangeGuy" instance=ExtResource("1_q22j4")]
+max_health = 12.0
+speed = 1.0
+score_give = 200.0
+projectile = ExtResource("2_7mxdq")
+cooldown_extra_max = 0.8
+
+[node name="Skeleton3D" parent="Manikin/Bottom" index="0"]
+bones/0/position = Vector3(0, 0.822895, 0)
+bones/1/rotation = Quaternion(-0.184106, -2.18126e-08, -4.28432e-09, 0.982907)
+bones/2/rotation = Quaternion(0.281976, 9.71461e-16, -6.35322e-16, 0.959421)
+bones/3/rotation = Quaternion(-0.0976053, -2.10381e-08, -4.15092e-09, 0.995225)
+bones/4/rotation = Quaternion(0.275473, 7.30166e-16, -5.83407e-16, 0.961309)
+bones/5/position = Vector3(0.0463317, -0.0541898, 0.107829)
+bones/5/rotation = Quaternion(3.42137e-19, 0.705564, 0.708646, 3.42137e-19)
+bones/7/rotation = Quaternion(8.75771e-27, 0, 1, -5.491e-28)
+bones/8/rotation = Quaternion(-8.75771e-27, 0, 1, -5.491e-28)
+bones/9/position = Vector3(-0.0517858, -0.0279189, 0.0107115)
+bones/9/rotation = Quaternion(1.76146e-17, 0.632473, 0.774583, 1.76146e-17)
+bones/11/rotation = Quaternion(1.12332e-24, 0, 1, -5.61662e-25)
+bones/12/rotation = Quaternion(-1.12332e-24, 0, 1, -5.61662e-25)
+
+[node name="legs" parent="Manikin/Bottom/Skeleton3D" index="0"]
+instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
+
+[node name="torsoball" parent="Manikin/Bottom/Skeleton3D" index="1"]
+instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
+
+[node name="waist" parent="Manikin/Bottom/Skeleton3D" index="2"]
+instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
+
+[node name="WaistPhysical" parent="Manikin/Bottom/Skeleton3D" index="3"]
+transform = Transform3D(-3.5844e-10, -0.971431, -0.23732, 5.91159e-08, -0.236295, 0.967331, -0.9959, -1.40232e-08, 5.7413e-08, 0.0231658, 0.766659, 1.62125e-05)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62792e-05, 0.00913088, 0.0602384)
+body_offset = Transform3D(-3.5844e-10, -0.971431, -0.23732, 2.44381e-10, 0.236295, -0.967331, 0.9959, -6.10854e-11, 2.44377e-10, 0.0231658, 0.0561129, -1.62125e-05)
+
+[node name="Physical Bone thigh_L" parent="Manikin/Bottom/Skeleton3D" index="4"]
+transform = Transform3D(1, -3.81372e-08, -1.48437e-08, 3.77642e-09, -0.275356, 0.963367, -4.0882e-08, -0.963382, -0.275349, 0.0463109, 0.541496, 0.0351359)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08023e-05, 0.00858655, 0.0975627)
+body_offset = Transform3D(1, 4.88102e-09, -2.88574e-09, -2.40288e-09, -0.109716, -0.995919, -4.95677e-09, 0.995936, -0.109717, -2.0802e-05, 0.0981066, 0.00215264)
+
+[node name="Physical Bone thigh_R" parent="Manikin/Bottom/Skeleton3D" index="5"]
+transform = Transform3D(1, -4.49672e-08, 3.59459e-09, -2.11468e-08, -0.396536, 0.92019, -4.00155e-08, -0.920184, -0.396521, -0.0518034, 0.547174, 0.0546868)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76034e-05, 0.0161782, 0.100373)
+body_offset = Transform3D(1, -7.7644e-09, 2.45646e-08, 2.56901e-08, 0.228913, -0.975492, 2.17685e-09, 0.975489, 0.228897, -1.76057e-05, 0.0942093, -0.0387567)
+
+[node name="Physical Bone foot_control_L" parent="Manikin/Bottom/Skeleton3D" index="6"]
+transform = Transform3D(1, -1.38861e-10, -7.30793e-12, -6.10052e-13, 0.255622, -0.967749, 2.62048e-11, 0.967793, 0.255614, 0.046333, 0.0291152, 0.0624146)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3858e-06, 0.0346384, 0.0947764)
+body_offset = Transform3D(-1, 1.38861e-10, 7.30971e-12, 2.62048e-11, 0.967465, 0.256855, -5.76435e-13, 0.256863, -0.96742, -1.38581e-06, -0.0578552, 0.0827913)
+
+[node name="Physical Bone foot_IK_L" parent="Manikin/Bottom/Skeleton3D" index="7"]
+transform = Transform3D(-1, 1.19151e-10, 5.17968e-11, 6.10052e-13, 0.236215, -0.972705, -2.62048e-11, -0.972698, -0.236215, 0.0463404, 0.248831, 0.0176809)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72836e-06, -0.0676219, 0.216605)
+body_offset = Transform3D(-1, 1.19144e-10, 5.17968e-11, 2.62048e-11, 0.973001, 0.234967, 5.76435e-13, 0.234967, -0.973007, 8.72836e-06, 0.0149011, 0.226647)
+
+[node name="Physical Bone foot_control_R" parent="Manikin/Bottom/Skeleton3D" index="8"]
+transform = Transform3D(1, -9.95257e-11, -2.4853e-11, -8.9916e-12, 0.231947, -0.973652, 1.75504e-11, 0.973689, 0.231939, -0.0517669, -0.0108999, 0.200619)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8917e-05, -0.194838, -0.0389264)
+body_offset = Transform3D(-1, 9.95257e-11, 2.48548e-11, 1.91633e-11, 0.892699, 0.452706, -4.64873e-12, 0.452723, -0.892665, -1.8917e-05, 0.191554, 0.0534592)
+
+[node name="Physical Bone foot_IK_R" parent="Manikin/Bottom/Skeleton3D" index="9"]
+transform = Transform3D(-1, 9.59233e-11, 1.55591e-11, 8.9916e-12, 0.259787, -0.966538, -1.75504e-11, -0.966569, -0.259787, -0.0517739, 0.209742, 0.161155)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18576e-05, 0.184482, 0.187912)
+body_offset = Transform3D(-1, 9.59304e-11, 1.55573e-11, 1.91633e-11, 1.0005, 0.027108, 4.64873e-12, 0.0271013, -1.00048, 1.18576e-05, -0.189669, 0.183002)
+
+[node name="arms" parent="Manikin/Top/Skeleton3D" index="0"]
+instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
+
+[node name="head" parent="Manikin/Top/Skeleton3D" index="1"]
+instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
+
+[node name="neckball" parent="Manikin/Top/Skeleton3D" index="2"]
+instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
+
+[node name="torso" parent="Manikin/Top/Skeleton3D" index="3"]
+instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
+
+[node name="CollisionShape3D" parent="DetectionArea3D" index="0"]
+shape = SubResource("SphereShape3D_orq0i")
+
+[editable path="Manikin"]
+[editable path="Manikin/Top/Skeleton3D/torso/Blood"]

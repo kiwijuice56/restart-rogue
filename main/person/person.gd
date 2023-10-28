@@ -25,9 +25,14 @@ var hurt: bool = false
 var dead: bool = false
 var on_ground: bool = false
 
+var record_yay: int = 2
 var score: int = 0:
 	set(s):
 		score = s
+		if is_player and score >= record_yay:
+			record_yay += 500
+			restart_pills += 1
+			$AudioStreamPlayer.play()
 		score_changed.emit(s)
 
 var grav_vel: Vector3 
@@ -69,6 +74,9 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 		return
 	if damage_multiplier > 1.0 and not p.can_crit:
 		damage_multiplier = 1.0
+	
+	
+	
 	last_collider = p
 	
 	if p.sender == self:
@@ -93,7 +101,10 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 		if not is_player:
 			$HurtStreamPlayer.play()
 			if damage_multiplier > 1.0:
+				p.sender.score += 50
 				$HurtStreamPlayer2.play()
+			else:
+				p.sender.score += 10
 		model.get_node("GameAnimationPlayer").stop()
 		model.get_node("GameAnimationPlayer").play("hurt")
 
@@ -110,6 +121,9 @@ func _physics_process(delta: float) -> void:
 	
 	_animate()
 	move_and_slide()
+	
+	if global_position.y < -12:
+		die()
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.input(event)
@@ -143,6 +157,12 @@ func _walk(delta: float, camera_basis: bool = false) -> Vector3:
 	return walk_vel
 
 func _animate() -> void:
+	if is_player:
+		if walk_vel.length() > 0.1 and is_on_floor():
+			$AnimationPlayer2.play("walk")
+		elif $AnimationPlayer2.is_playing():
+			$AnimationPlayer2.stop()
+	
 	var run_strength: float = velocity.length() / speed
 	run_strength *= (1.0 + Vector3(move_dir.x, 0, move_dir.y).dot(-camera.transform.basis.z)) / 2.0
 	if move_dir.length() > 0:
@@ -213,6 +233,6 @@ func die() -> void:
 	queue_free()
 
 func will_fall() -> bool:
-	$FloorCast.position = walk_vel / 16
+	$FloorCast.position = Vector3(move_dir.x, 0, move_dir.y) 
 	$FloorCast.force_raycast_update()
 	return not $FloorCast.is_colliding()

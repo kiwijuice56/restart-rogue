@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkidqk23c0r27"]
+[gd_scene load_steps=27 format=3 uid="uid://dkidqk23c0r27"]
 
 [ext_resource type="Script" path="res://main/person/person.gd" id="1_x3rt7"]
 [ext_resource type="PackedScene" uid="uid://cvwooob2c2mkx" path="res://main/person/manikin.tscn" id="2_g75lx"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cb5dsgmflaiqa" path="res://main/person/660769__madpancake__headshot-sound.ogg" id="8_so3v4"]
 [ext_resource type="AudioStream" uid="uid://cifygmic0cses" path="res://main/person/player/step1.ogg" id="10_2e0uf"]
 [ext_resource type="AudioStream" uid="uid://blevcrvqaoemr" path="res://main/person/player/step2.ogg" id="11_julye"]
+[ext_resource type="AudioStream" uid="uid://oc8k5s2f6auc" path="res://main/person/player/extralife.ogg" id="12_2vgg0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddnpo"]
 radius = 0.3
@@ -62,11 +63,50 @@ stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_41evc"]
 random_pitch = 1.47
+random_volume_offset_db = 4.03
 streams_count = 2
 stream_0/stream = ExtResource("10_2e0uf")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("11_julye")
 stream_1/weight = 1.0
+
+[sub_resource type="Animation" id="Animation_ite6x"]
+resource_name = "walk"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StepStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_irpr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StepStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkd4d"]
+_data = {
+"RESET": SubResource("Animation_irpr8"),
+"walk": SubResource("Animation_ite6x")
+}
 
 [node name="Person" type="CharacterBody3D" node_paths=PackedStringArray("projectile_spawn")]
 collision_layer = 2
@@ -122,7 +162,7 @@ script = ExtResource("4_nfwle")
 
 [node name="JumpStreamPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_w56m2")
-volume_db = -24.0
+volume_db = -30.0
 max_distance = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -153,3 +193,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30596, -0.628032)
 
 [node name="FallStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_41evc")
+
+[node name="StepStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_41evc")
+volume_db = -8.0
+pitch_scale = 1.2
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qkd4d")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_2vgg0")
+volume_db = 9.197

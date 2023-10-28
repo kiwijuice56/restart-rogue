@@ -37,6 +37,9 @@ state = NodePath("FreeControl")
 script = ExtResource("3_xhkxq")
 camera_sens = 5.0
 
+[node name="JumpStreamPlayer" parent="." index="6"]
+pitch_scale = 0.8
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280401, 0)
 visible = false
