@@ -1652,16 +1652,16 @@ instance_shader_parameters/color = Color(0.227451, 0.529412, 0.227451, 1)
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -4.44089e-16, 0.909007, 0.0116637)
 
 [node name="Physical Bone shoulder_L" parent="Manikin/Top/Skeleton3D" index="5"]
-transform = Transform3D(-0.982505, 0.128503, -0.134794, 0.135682, 0.989705, -0.0454611, 0.127567, -0.0629548, -0.989827, 0.152994, 0.993821, 0.100993)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99298e-07, 5.26642e-06, 0.105309)
+transform = Transform3D(-0.982499, 0.128503, -0.134794, 0.135682, 0.989705, -0.0454611, 0.127566, -0.0629548, -0.989827, 0.152994, 0.993821, 0.100993)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.95577e-07, 5.26563e-06, 0.105309)
 
 [node name="Physical Bone arm_L" parent="Manikin/Top/Skeleton3D" index="6"]
-transform = Transform3D(-0.51931, 0.179525, 0.835517, 0.175515, 0.97941, -0.10131, -0.836368, 0.094055, -0.540043, 0.0820881, 1.00893, 0.26024)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42664e-06, 5.48161e-06, 0.101855)
+transform = Transform3D(-0.51931, 0.179525, 0.835517, 0.175515, 0.97942, -0.10131, -0.836368, 0.0940565, -0.540043, 0.0820882, 1.00893, 0.26024)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24784e-06, 4.28966e-06, 0.101855)
 
 [node name="Physical Bone shoulder_R" parent="Manikin/Top/Skeleton3D" index="7"]
 transform = Transform3D(-0.0058577, 0.986394, -0.164296, 0.998772, -0.00231274, -0.0494935, -0.0492002, -0.164385, -0.985169, -0.104545, 1.0016, 0.127202)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38071e-05, 6.70552e-07, 0.105309)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36879e-05, 7.22706e-07, 0.105309)
 
 [node name="Physical Bone arm_R" parent="Manikin/Top/Skeleton3D" index="8"]
 transform = Transform3D(-0.00585773, 0.986394, -0.164296, 0.998772, -0.00231269, -0.0494935, -0.0492004, -0.164385, -0.985169, -0.0705082, 1.01187, 0.33129)

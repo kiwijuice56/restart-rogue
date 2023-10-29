@@ -26,7 +26,7 @@ var dead: bool = false
 var on_ground: bool = false
 var aware: bool = false
 
-var record_yay: int = 2
+var record_yay: int = 500
 var score: int = 0:
 	set(s):
 		score = s
