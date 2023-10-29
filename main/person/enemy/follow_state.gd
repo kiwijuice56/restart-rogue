@@ -14,6 +14,8 @@ func _ready() -> void:
 	detection_area.area_exited.connect(_on_area_exited)
 	$Timer.start(randf() * 4.0)
 	$Timer.timeout.connect(_switch)
+	
+	await controller.ready
 
 func _switch() -> void:
 	offset = 3.0 * Vector3(randf() * 2.0 - 1.0, 0, randf() * 2 - 1.0)

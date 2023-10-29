@@ -48,6 +48,7 @@ var restart_pills: int = 3:
 @onready var camera: Camera3D = $Camera3D
 @onready var model: Node3D = $Manikin
 @onready var state_machine: StateMachine = $StateMachine
+@onready var tree: AnimationTree = model.get_node("AnimationTree")
 
 @onready var health: float = max_health:
 	set(h):
@@ -175,7 +176,7 @@ func _animate() -> void:
 		run_strength = max(0.1, run_strength)
 	
 	model.rotation.y = camera.rotation.y
-	model.get_node("AnimationTree").set("parameters/Normal/run_amount/blend_amount", run_strength)
+	tree.set("parameters/Normal/run_amount/blend_amount", run_strength)
 
 func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.global_basis.z) -> void:
 	if not $ShootTimer.is_stopped():
