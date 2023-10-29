@@ -48,3 +48,5 @@ mesh = SubResource("CapsuleMesh_r1k3a")
 
 [node name="AudioStreamPlayer" parent="." index="17"]
 volume_db = 1.415
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="18"]

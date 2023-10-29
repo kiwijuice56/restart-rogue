@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dpdhybjomvxo3"]
+[gd_scene load_steps=19 format=3 uid="uid://dpdhybjomvxo3"]
 
 [ext_resource type="Texture2D" uid="uid://dahbb25vx54m3" path="res://main/ui/hud/cross_hair.png" id="1_558tc"]
 [ext_resource type="Script" path="res://main/ui/hud/hud.gd" id="1_khdak"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bqvlit3erxbm0" path="res://main/ui/restart_jingle.ogg" id="6_3x86o"]
 [ext_resource type="Texture2D" uid="uid://bh17cpdkqv40u" path="res://main/ui/hud/reload_fill.png" id="7_dos2w"]
 [ext_resource type="Shader" path="res://main/ui/hud/vignette.gdshader" id="7_yyf1o"]
+[ext_resource type="AudioStream" uid="uid://wqokt0n6lesv" path="res://main/person/player/gameover.mp3" id="9_j1low"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xx5rm"]
 shader = ExtResource("2_3nsbn")
@@ -68,6 +69,118 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/FunLabel:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[shake rate=20.0 level=5 connected=1]restart[/shake]"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeadJinglePlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_smgjm"]
+resource_name = "death"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/FunLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/CrossHair:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/FunLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.3, 1.8, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.666667, 0.666667, 1.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/FunLabel:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[shake rate=20.0 level=5 connected=1]game over[/shake]"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeadJinglePlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2sn2t"]
 resource_name = "restart"
@@ -124,6 +237,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_balxu"]
 _data = {
 "RESET": SubResource("Animation_ifxha"),
+"death": SubResource("Animation_smgjm"),
 "restart": SubResource("Animation_2sn2t")
 }
 
@@ -164,6 +278,7 @@ _data = {
 }
 
 [node name="HUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_khdak")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -259,6 +374,7 @@ stretch_mode = 3
 
 [node name="FunLabel" type="RichTextLabel" parent="MarginContainer"]
 visible = false
+z_index = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -280,8 +396,22 @@ material = SubResource("ShaderMaterial_hpbfg")
 offset_right = 576.0
 offset_bottom = 324.0
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="RestartJinglePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3x86o")
+volume_db = 9.048
+
+[node name="DeadJinglePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_j1low")
 volume_db = 9.048
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

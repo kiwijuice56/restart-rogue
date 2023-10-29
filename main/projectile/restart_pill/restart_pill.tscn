@@ -79,7 +79,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -221,7 +221,7 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_m7602")
 
 [node name="Explosion" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_obky3")
 cast_shadow = 0

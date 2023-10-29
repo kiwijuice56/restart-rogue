@@ -28,3 +28,13 @@ func _on_cooldown_start(cooldown: float) -> void:
 func restart(weapon_name: String) -> void:
 	$AnimationPlayer.play("restart")
 	%WeaponLabel.text = "[shake rate=20.0 level=5 connected=1]" + weapon_name + "[/shake]"
+
+func die() -> void:
+	$AnimationPlayer.play("death")
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("exit"):
+		if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

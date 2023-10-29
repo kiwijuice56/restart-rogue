@@ -7,13 +7,13 @@ class_name FreeControlState extends State
 
 var look_dir: Vector2 # Input direction for look/aim
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		look_dir = event.relative * 0.001
 		_rotate_camera()
-	if Input.is_action_just_pressed("ui_accept"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if Input.is_action_just_pressed("exit"): get_tree().quit()
 
 func process(delta: float) -> void:
 	controller.jumping = Input.is_action_pressed("jump")
