@@ -139,88 +139,67 @@ mesh = SubResource("BoxMesh_qi0qc")
 
 [node name="RangeGuy" parent="." index="17" instance=ExtResource("2_hqr4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.1402, 4.14275, -52.3232)
-visible = false
 
 [node name="RangeGuy3" parent="." index="18" node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("2_hqr4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.7266, 3.69838, -52.779)
-visible = false
 projectile_spawn = NodePath("../RangeGuy/Camera3D/EnemyAmmoSpawn")
 
 [node name="RangeGuy2" parent="." index="19" instance=ExtResource("2_hqr4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5976, 4.45964, -58.5035)
-visible = false
 
 [node name="RangeGuy4" parent="." index="20" instance=ExtResource("2_hqr4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.9, 4.45964, 4.20183)
-visible = false
 
 [node name="RangeGuy5" parent="." index="21" instance=ExtResource("2_hqr4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.115, 4.45964, 11.9861)
-visible = false
 
 [node name="Enemy" parent="." index="22" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 1.49775, 1.74432, -33.2471)
-visible = false
 
 [node name="Enemy6" parent="." index="23" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 26.5449, -0.615003, -65.3193)
-visible = false
 
 [node name="Enemy7" parent="." index="24" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 41.4184, -0.615003, -62.5487)
-visible = false
 
 [node name="Enemy8" parent="." index="25" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 51.2747, -0.615003, -56.9745)
-visible = false
 
 [node name="Enemy9" parent="." index="26" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 54.1279, -0.615003, -56.9745)
-visible = false
 
 [node name="Enemy10" parent="." index="27" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 52.9434, -0.615003, -55.6725)
-visible = false
 
 [node name="Enemy11" parent="." index="28" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 66.2056, -0.615003, -49.6123)
-visible = false
 
 [node name="Enemy12" parent="." index="29" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 69.0588, -0.615003, -49.6123)
-visible = false
 
 [node name="Enemy13" parent="." index="30" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 67.8742, -0.615003, -48.3102)
-visible = false
 
 [node name="Enemy2" parent="." index="31" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 8.56162, 1.74432, -60.9423)
-visible = false
 
 [node name="Enemy3" parent="." index="32" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 7.24935, 1.74432, -63.1358)
-visible = false
 
 [node name="Enemy4" parent="." index="33" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 9.41388, 1.74432, -63.1358)
-visible = false
 
 [node name="Enemy5" parent="." index="34" instance=ExtResource("2_qptrw")]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, 9.41388, 1.74432, -59.6342)
-visible = false
 
 [node name="BombGuy" parent="." index="35" instance=ExtResource("4_gyx0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3434, 1.5431, -50.0209)
-visible = false
 
 [node name="BombGuy2" parent="." index="36" instance=ExtResource("4_gyx0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66179, 2.33711, -58.8154)
-visible = false
 
 [node name="BombGuy3" parent="." index="37" instance=ExtResource("4_gyx0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4863, 4.86374e-05, -61.1804)
-visible = false
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." index="38"]
 transform = Transform3D(0.953333, 0, 0.30192, 0, 1, 0, -0.30192, 0, 0.953333, -1.43839, -11.5366, -23.2109)
@@ -688,61 +667,47 @@ light_energy = 0.049
 
 [node name="BombGuy4" parent="." index="91" instance=ExtResource("4_gyx0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.998, 0, -6.57182)
-visible = false
 
 [node name="BombGuy5" parent="." index="92" instance=ExtResource("4_gyx0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.461, 0, -1.50629)
-visible = false
 
 [node name="MiniEnemyGuy" parent="." index="93" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.326, 0, -16.8634)
-visible = false
 
 [node name="MiniEnemyGuy13" parent="." index="94" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.5224, 2.61196, -9.13296)
-visible = false
 
 [node name="MiniEnemyGuy2" parent="." index="95" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.326, 0, -15.0522)
-visible = false
 
 [node name="MiniEnemyGuy3" parent="." index="96" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8716, 0, -15.0522)
-visible = false
 
 [node name="MiniEnemyGuy4" parent="." index="97" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.322, 0, -2.95492)
-visible = false
 
 [node name="MiniEnemyGuy5" parent="." index="98" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.031, 0, -2.95492)
-visible = false
 
 [node name="MiniEnemyGuy6" parent="." index="99" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.031, 0, -1.01185)
-visible = false
 
 [node name="MiniEnemyGuy7" parent="." index="100" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.949, 0, 4.71121)
-visible = false
 
 [node name="MiniEnemyGuy8" parent="." index="101" node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.949, 0, 7.40028)
-visible = false
 projectile_spawn = NodePath("../MiniEnemyGuy2/Camera3D/EnemyAmmoSpawn")
 
 [node name="MiniEnemyGuy9" parent="." index="102" node_paths=PackedStringArray("projectile_spawn") instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.903, 0, 7.40028)
-visible = false
 projectile_spawn = NodePath("../MiniEnemyGuy2/Camera3D/EnemyAmmoSpawn")
 
 [node name="MiniEnemyGuy10" parent="." index="103" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.075, 0, 15.6854)
-visible = false
 
 [node name="MiniEnemyGuy11" parent="." index="104" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.075, 0, 18.891)
-visible = false
 
 [node name="MiniEnemyGuy12" parent="." index="105" instance=ExtResource("6_3b8wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.073, 0, 18.891)

@@ -320,7 +320,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 bbcode_enabled = true
-text = "[shake rate=20.0 level=5 connected=1]Plasma Ball[/shake]"
+text = "[shake rate=20.0 level=5 connected=1]torus rifle[/shake]"
 fit_content = true
 autowrap_mode = 0
 

@@ -26,7 +26,7 @@ shape = SubResource("BoxShape3D_rypy4")
 [node name="Camera3D" parent="." index="4"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.15526, 0)
 current = true
-far = 48.0
+far = 128.0
 
 [node name="Weapon" type="Node3D" parent="Camera3D" index="1"]
 
@@ -45,6 +45,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280401, 0)
 visible = false
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_r1k3a")
+
+[node name="FallStreamPlayer" parent="." index="14"]
+volume_db = 3.0
+
+[node name="StepStreamPlayer" parent="." index="15"]
+volume_db = -4.0
 
 [node name="AudioStreamPlayer" parent="." index="17"]
 volume_db = 1.415
