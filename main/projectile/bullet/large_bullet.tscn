@@ -39,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("")
+tracks/2/path = NodePath("MeshInstance3D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -91,7 +91,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("")
+tracks/1/path = NodePath("MeshInstance3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -131,7 +131,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("")
+tracks/2/path = NodePath("MeshInstance3D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -167,10 +167,12 @@ albedo_color = Color(1.98431, 2.9098, 3, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_77i1v"]
 radius = 0.4
 height = 6.0
-radial_segments = 16
-rings = 3
+radial_segments = 8
+rings = 2
 
 [sub_resource type="SphereMesh" id="SphereMesh_il5sl"]
+radial_segments = 8
+rings = 6
 
 [sub_resource type="QuadMesh" id="QuadMesh_ip4v2"]
 size = Vector2(0.7, 0.7)

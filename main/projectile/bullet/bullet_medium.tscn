@@ -165,12 +165,16 @@ albedo_color = Color(3, 2.48235, 1.56863, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_ephfe"]
 outer_radius = 1.5
+rings = 12
+ring_segments = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obky3"]
 shading_mode = 0
 albedo_color = Color(3, 3, 3, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_il5sl"]
+radial_segments = 12
+rings = 8
 
 [sub_resource type="QuadMesh" id="QuadMesh_suqh7"]
 size = Vector2(0.6, 0.6)

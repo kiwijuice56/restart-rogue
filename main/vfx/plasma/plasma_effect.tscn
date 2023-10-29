@@ -18,3 +18,5 @@ instance_shader_parameters/offset = Vector2(1, 1)
 instance_shader_parameters/threshold = 0.0
 mesh = SubResource("QuadMesh_rg7nt")
 script = ExtResource("3_pqs5p")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]

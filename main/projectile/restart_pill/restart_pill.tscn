@@ -167,12 +167,16 @@ albedo_color = Color(2.68235, 0.878431, 3, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_m7602"]
 radius = 1.0
 height = 2.0
+radial_segments = 16
+rings = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obky3"]
 shading_mode = 0
 albedo_color = Color(3, 3, 3, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_il5sl"]
+radial_segments = 16
+rings = 8
 
 [sub_resource type="QuadMesh" id="QuadMesh_ip4v2"]
 size = Vector2(0.4, 0.4)
