@@ -4,7 +4,7 @@ class_name FollowState extends State
 @export var equilibrium_distance: float = 4.0
 
 var player: Player
-var offset: Vector3 
+var offset: Vector3 = Vector3(randf(), 0, randf()).normalized()
 var delay: float = 0.0
 var x:float = 0.0
 
@@ -49,7 +49,8 @@ func process(delta: float) -> void:
 		if controller.will_fall():
 			controller.move_dir = Vector2()
 	elif controller.speed > 0:
-		controller.camera.look_at(offset + controller.global_position)
+		if offset.length() > 0.01:
+			controller.camera.look_at(offset * 32 + controller.global_position)
 		controller.move_dir = Vector2(offset.x, offset.z).normalized() / 1.5
 		if controller.will_fall():
 			controller.move_dir = Vector2()

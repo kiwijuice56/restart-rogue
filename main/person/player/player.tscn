@@ -26,7 +26,7 @@ shape = SubResource("BoxShape3D_rypy4")
 [node name="Camera3D" parent="." index="4"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.15526, 0)
 current = true
-far = 159.05
+far = 48.0
 
 [node name="Weapon" type="Node3D" parent="Camera3D" index="1"]
 
