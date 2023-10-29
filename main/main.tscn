@@ -19,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_utrk4")
 
@@ -26,8 +27,8 @@ script = ExtResource("1_utrk4")
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_3d = true
-size = Vector2i(576, 324)
-size_2d_override = Vector2i(576, 324)
+size = Vector2i(403, 227)
+size_2d_override = Vector2i(403, 227)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -41,7 +42,6 @@ cooldown_extra_max = 0.4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport"]
 stream = ExtResource("6_w3ba8")
-autoplay = true
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_vt5wc")]
 process_mode = 3

@@ -24,6 +24,7 @@ var jumping: bool = false
 var hurt: bool = false
 var dead: bool = false
 var on_ground: bool = false
+var aware: bool = false
 
 var record_yay: int = 2
 var score: int = 0:
@@ -89,7 +90,7 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 		return 
 	
 	hurt = true
-	self.health -= p.damage * damage_multiplier * (0.5 if is_player else 1.0)
+	self.health -= p.damage * damage_multiplier * (0.06 if is_player else 1.0)
 	
 	walk_vel += p.momentum
 	
@@ -99,6 +100,11 @@ func _on_hurt(area: Area3D, damage_multiplier: float) -> void:
 		die()
 	else:
 		if not is_player:
+			if not aware:
+				$DetectionArea3D/CollisionShape3D.shape = $DetectionArea3D/CollisionShape3D.shape.duplicate()
+				$DetectionArea3D/CollisionShape3D.shape.radius *= 2.0
+				aware = true
+			
 			$HurtStreamPlayer.play()
 			if damage_multiplier > 1.0:
 				p.sender.score += 50
@@ -206,7 +212,7 @@ func shoot(restart: bool = false, shoot_dir: Vector3 = -camera.global_basis.z) -
 			var end_point_global = end_point - origin_r
 			real_dir = end_point - projectile_spawn.global_position 
 		new_projectile.dir = real_dir.normalized().rotated(Vector3(1, 1, 0).normalized(), 0.1 * new_projectile.bloom * (randf() - 0.5))
-	else: new_projectile.dir = shoot_dir
+	else: new_projectile.dir = shoot_dir.rotated(Vector3(1, 1, 0).normalized(), 0.15 * new_projectile.bloom * (randf() - 0.5))
 	await new_projectile.start()
 	
 	projectile_spawn.remove_child(new_projectile)

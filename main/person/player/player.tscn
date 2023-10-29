@@ -45,3 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280401, 0)
 visible = false
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_r1k3a")
+
+[node name="AudioStreamPlayer" parent="." index="17"]
+volume_db = 1.415
