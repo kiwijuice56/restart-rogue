@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://hckmq1aptq6c"]
+
+[ext_resource type="PackedScene" uid="uid://cu68g4ni32j80" path="res://main/level/capybara.blend" id="1_pmm5k"]
+
+[node name="capybara-8121e64edd18ae37e024a024604df239" instance=ExtResource("1_pmm5k")]
